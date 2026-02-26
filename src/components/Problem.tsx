@@ -72,13 +72,6 @@ const Problem = () => {
 
                     {/* Middle: Official SVG (Phones) with Grid Background */}
                     <div className="relative group max-w-4xl w-full">
-                        {/* Mockup Grid Backdrop */}
-                        <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none transform translate-x-12 translate-y-12"
-                            style={{
-                                backgroundImage: `radial-gradient(circle at 2px 2px, #000000 1px, transparent 0)`,
-                                backgroundSize: '48px 48px'
-                            }}
-                        />
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}

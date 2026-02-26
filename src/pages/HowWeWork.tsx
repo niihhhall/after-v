@@ -139,7 +139,7 @@ const WhereAfter5Fits = () => {
 
 const HowWeWork = () => {
     return (
-        <div className="bg-background pt-[64.8px]"> {/* Space for navbar if it stays fixed */}
+        <div className="bg-[#efefef]">
             <PageHero title="How We" accent="Work" />
             <HowWeWorkAudit />
             <DetailedProcess />

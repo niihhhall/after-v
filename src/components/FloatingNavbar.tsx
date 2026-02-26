@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const FloatingNavbar = () => {
     const [scrolled, setScrolled] = useState(false);
-    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -15,6 +14,7 @@ const FloatingNavbar = () => {
     }, []);
 
     const navLinks = [
+        { name: "Home", href: "/" },
         { name: "How We Work", href: "/how-we-work" },
         { name: "Demo", href: "/demo" },
         { name: "About Us", href: "/about" },
@@ -56,7 +56,7 @@ const FloatingNavbar = () => {
                             <Link
                                 key={link.name}
                                 to={link.href}
-                                className={`font-inter font-semibold text-[16px] hover:text-primary/60 transition-colors ${location.pathname === link.href ? "text-primary" : "text-primary/70"}`}
+                                className="font-inter font-semibold text-[16px] text-primary/70 hover:text-primary transition-colors"
                             >
                                 {link.name}
                             </Link>
@@ -74,52 +74,54 @@ const FloatingNavbar = () => {
 
                 {/* CTA Button - Precise right alignment */}
                 <div className="flex items-center absolute right-[4px] top-1/2 -translate-y-1/2">
-                    <motion.button
-                        whileHover="hover"
-                        whileTap={{ scale: 0.97 }}
-                        initial="rest"
-                        animate="rest"
-                        variants={{
-                            rest: { scale: 1 },
-                            hover: { scale: 1.04 }
-                        }}
-                        transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-                        className="relative overflow-hidden bg-primary text-white font-inter font-bold w-[173px] h-[56.8px] rounded-[52px] text-[15px] flex items-center justify-center gap-2"
-                    >
-                        {/* Continuous ambient glow ping */}
-                        <motion.span
-                            animate={{ scale: [1, 1.6, 1], opacity: [0.25, 0, 0.25] }}
-                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute inset-0 rounded-[52px] bg-[#2EFFA1]/30 pointer-events-none"
-                        />
-
-                        {/* Green shimmer sweep on hover */}
-                        <motion.span
+                    <Link to="/contact">
+                        <motion.button
+                            whileHover="hover"
+                            whileTap={{ scale: 0.97 }}
+                            initial="rest"
+                            animate="rest"
                             variants={{
-                                rest: { x: '-110%', skewX: -15 },
-                                hover: { x: '210%', skewX: -15 }
+                                rest: { scale: 1 },
+                                hover: { scale: 1.04 }
                             }}
-                            transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
-                            className="absolute inset-0 w-1/2 bg-[#2EFFA1]/50 blur-sm pointer-events-none"
-                        />
-
-                        <span className="relative z-10">Book a Call</span>
-
-                        {/* Arrow that slides in on hover */}
-                        <motion.svg
-                            variants={{
-                                rest: { x: -6, opacity: 0 },
-                                hover: { x: 0, opacity: 1 }
-                            }}
-                            transition={{ duration: 0.25 }}
-                            className="relative z-10 w-4 h-4"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                            transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                            className="relative overflow-hidden bg-primary text-white font-inter font-bold w-[173px] h-[56.8px] rounded-[52px] text-[15px] flex items-center justify-center gap-2"
                         >
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                            <polyline points="12 5 19 12 12 19" />
-                        </motion.svg>
-                    </motion.button>
+                            {/* Continuous ambient glow ping */}
+                            <motion.span
+                                animate={{ scale: [1, 1.6, 1], opacity: [0.25, 0, 0.25] }}
+                                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute inset-0 rounded-[52px] bg-[#2EFFA1]/30 pointer-events-none"
+                            />
+
+                            {/* Green shimmer sweep on hover */}
+                            <motion.span
+                                variants={{
+                                    rest: { x: '-110%', skewX: -15 },
+                                    hover: { x: '210%', skewX: -15 }
+                                }}
+                                transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
+                                className="absolute inset-0 w-1/2 bg-[#2EFFA1]/50 blur-sm pointer-events-none"
+                            />
+
+                            <span className="relative z-10">Book a Call</span>
+
+                            {/* Arrow that slides in on hover */}
+                            <motion.svg
+                                variants={{
+                                    rest: { x: -6, opacity: 0 },
+                                    hover: { x: 0, opacity: 1 }
+                                }}
+                                transition={{ duration: 0.25 }}
+                                className="relative z-10 w-4 h-4"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                            >
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </motion.svg>
+                        </motion.button>
+                    </Link>
                 </div>
             </div>
         </motion.nav>

@@ -84,7 +84,7 @@ const TermsConditions = () => {
             <div className="max-w-[1411px] mx-auto px-6 lg:px-20 py-24 flex flex-col lg:flex-row gap-16 items-start">
 
                 {/* LEFT: Table of Contents */}
-                <div className="lg:w-[260px] shrink-0">
+                <div className="lg:w-[260px] shrink-0 lg:sticky lg:top-28 h-fit">
                     <div className="bg-white rounded-[20px] p-8 shadow-sm border border-black/5">
                         <p className="text-[11px] font-inter font-bold text-[#111827]/40 uppercase tracking-[0.2em] mb-6">Contents</p>
                         <nav className="space-y-3">

@@ -1,24 +1,30 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
     return (
-        <section className="relative pt-32 pb-0 overflow-hidden bg-background">
-            {/* Background grid */}
-            <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
+        <section className="relative pt-32 pb-0 overflow-hidden bg-[#FAFAFA]">
+            {/* Background geometric shapes (hero-bg.png) */}
+            <div 
+                className="absolute inset-0 z-0 pointer-events-none opacity-[0.12] mix-blend-multiply"
                 style={{
-                    backgroundImage: `radial-gradient(circle at 2px 2px, #000000 1px, transparent 0)`,
-                    backgroundSize: '40px 40px'
+                    backgroundImage: 'url(/assets/hero-bg.png)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'top center',
+                    backgroundRepeat: 'no-repeat'
                 }}
             />
 
-            {/* Background decoration - Official Vector PNG */}
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
-                <img
-                    src="/assets/hero-bg.png"
-                    alt=""
-                    className="w-full h-full object-cover opacity-50"
-                />
-            </div>
+            {/* Background grid */}
+            <div className="absolute inset-0 z-0 pointer-events-none"
+                style={{
+                    backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px)`,
+                    backgroundSize: '90px 90px'
+                }}
+            />
+
+            {/* Soft white radial center glow to highlight the text */}
+            <div className="absolute top-[80px] left-1/2 -translate-x-1/2 w-[1100px] h-[600px] bg-white/90 blur-[130px] opacity-90 pointer-events-none z-0" />
 
             <div className="max-w-[1411px] mx-auto px-6 relative z-10">
                 <div className="flex flex-col items-center text-center gap-10">
@@ -59,14 +65,16 @@ const Hero = () => {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="flex flex-col sm:flex-row items-center gap-4"
                     >
-                        <button className="bg-primary text-white font-inter font-bold px-[24px] h-[72.661px] rounded-[99.55px] flex items-center justify-center gap-[10px] hover:scale-105 transition-all text-[19.463px] group whitespace-nowrap shadow-xl">
-                            Try a Demo Here
-                            <div className="w-[40px] h-[41px] bg-accent-green rounded-full flex items-center justify-center group-hover:bg-accent-green/90 transition-colors shrink-0">
-                                <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1">
-                                    <path d="M18 10L0 20V0L18 10Z" fill="#000000" />
-                                </svg>
-                            </div>
-                        </button>
+                        <Link to="/demo">
+                            <button className="bg-primary text-white font-inter font-bold px-[24px] h-[72.661px] rounded-[99.55px] flex items-center justify-center gap-[10px] hover:scale-105 transition-all text-[19.463px] group whitespace-nowrap shadow-xl">
+                                Try a Demo Here
+                                <div className="w-[40px] h-[41px] bg-accent-green rounded-full flex items-center justify-center group-hover:bg-accent-green/90 transition-colors shrink-0">
+                                    <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1">
+                                        <path d="M18 10L0 20V0L18 10Z" fill="#000000" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </Link>
                     </motion.div>
 
                     {/* Dashboard Preview - exactly half crop, responsive */}

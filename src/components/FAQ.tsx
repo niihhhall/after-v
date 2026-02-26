@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Plus, Minus, HelpCircle } from "lucide-react";
 
 const FAQ = () => {
@@ -48,9 +49,11 @@ const FAQ = () => {
                             Find answers to the most common questions about After5 and how our AI agents can transform your sales process.
                         </p>
                         <div className="pt-8">
-                            <button className="bg-[#111827] text-white font-inter font-bold px-8 py-5 rounded-full hover:scale-105 transition-transform text-lg shadow-lg">
-                                Ask us anything else
-                            </button>
+                            <Link to="/contact">
+                                <button className="bg-[#111827] text-white font-inter font-bold px-8 py-5 rounded-full hover:scale-105 transition-transform text-lg shadow-lg">
+                                    Ask us anything else
+                                </button>
+                            </Link>
                         </div>
                     </div>
 

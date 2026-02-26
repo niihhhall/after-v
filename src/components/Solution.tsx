@@ -1,25 +1,34 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Zap, MessageSquare, Repeat, Users, ArrowRight } from "lucide-react";
 
 const FlipCard = ({ card, index }: { card: any, index: number }) => {
+    const [isHovered, setIsHovered] = useState(false);
+
     return (
-        <div className="relative h-[410px] w-full [perspective:1000px] group">
+        <div 
+            className="relative h-[410px] w-full [perspective:1000px] group cursor-pointer"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ rotateY: 180 }}
+                animate={{ rotateY: isHovered ? 180 : 0 }}
                 viewport={{ once: true }}
                 transition={{
-                    rotateY: { duration: 0.6, ease: "easeInOut" },
+                    rotateY: { duration: 0.6, ease: [0.23, 1, 0.32, 1] },
                     default: { delay: index * 0.1, duration: 0.8, ease: [0.23, 1, 0.32, 1] }
                 }}
                 className="relative h-full w-full [transform-style:preserve-3d] shadow-sm rounded-[20px]"
+                style={{ willChange: "transform" }}
             >
                 {/* Front Side */}
                 <div className={`absolute inset-0 h-full w-full rounded-[20px] p-[36px] [backface-visibility:hidden] flex flex-col items-center justify-center text-center space-y-6 ${card.variant === 'highlight' ? 'bg-[#f0f9f6]' : 'bg-white border border-black/5'}`}>
                     <div className="relative group/icon">
                         {/* Glow Effect */}
-                        <div className="absolute inset-0 bg-accent-green/20 blur-[30px] rounded-full scale-125 opacity-50 group-hover/icon:opacity-100 transition-opacity duration-500" />
+                        <div className={`absolute inset-0 bg-accent-green/20 blur-[30px] rounded-full scale-125 transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-50'}`} />
 
                         <div className="relative w-[80px] h-[80px] rounded-[24px] bg-accent-green text-primary flex items-center justify-center shadow-[0_15px_30px_-10px_rgba(46,255,161,0.3)] border border-white/20 z-10">
                             <card.icon size={40} strokeWidth={1.5} />
@@ -119,17 +128,19 @@ const Solution = () => {
                         We build bespoke <span className="font-bold text-primary">WhatsApp, SMS or email</span> handling systems to <span className="font-bold text-primary">capture</span> new leads instantly, <span className="font-bold text-primary">qualify</span> intent through consistent human sounding conversations, and track status <span className="font-bold text-primary">following up until the leads are booked</span>.
                     </motion.p>
 
-                    <motion.button
-                        initial={{ opacity: 0, scale: 1 }}
-                        whileHover={{ scale: 1.05, backgroundColor: "#2EFFA1", borderColor: "#2EFFA1" }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="bg-white px-[24px] py-[16px] rounded-[62px] shadow-sm flex items-center gap-2 group transition-all duration-300 border border-black/5"
-                    >
-                        <span className="font-inter font-bold text-[15px] text-primary">See How It Works</span>
-                        <ArrowRight size={18} className="text-primary group-hover:translate-x-1 transition-transform" />
-                    </motion.button>
+                    <Link to="/how-we-work">
+                        <motion.button
+                            initial={{ opacity: 0, scale: 1 }}
+                            whileHover={{ scale: 1.05, backgroundColor: "#2EFFA1", borderColor: "#2EFFA1" }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="bg-white px-[24px] py-[16px] rounded-[62px] shadow-sm flex items-center gap-2 group transition-all duration-300 border border-black/5"
+                        >
+                            <span className="font-inter font-bold text-[15px] text-primary">See How It Works</span>
+                            <ArrowRight size={18} className="text-primary group-hover:translate-x-1 transition-transform" />
+                        </motion.button>
+                    </Link>
                 </div>
 
                 {/* Cards Grid */}
