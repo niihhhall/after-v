@@ -1,28 +1,25 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const CTA = () => {
     return (
-        <div id="cta" className="bg-[#EFEFEF] px-4 pt-4 pb-0">
-            <section className="bg-primary relative overflow-hidden rounded-[20px]">
+        <div id="cta" className="bg-[#EFEFEF] px-4 py-[85px]">
+            <section className="bg-primary relative overflow-hidden rounded-[40px] max-w-[1411px] mx-auto shadow-2xl">
 
-                {/* Background Glow */}
-                <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none z-0 overflow-hidden">
-                    <img
-                        src="/assets/cta-glow.svg"
-                        alt=""
-                        className="w-full h-full object-cover lg:scale-125 transform -translate-x-1/4 -translate-y-1/4"
-                    />
-                </div>
-
-                {/* Background decorative dots */}
-                <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none"
+                {/* Background Grid Pattern - More visible as per screenshot */}
+                <div className="absolute inset-0 z-0 opacity-[0.08] pointer-events-none"
                     style={{
-                        backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-                        backgroundSize: '48px 48px'
+                        backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.4) 1px, transparent 1px)`,
+                        backgroundSize: '64px 64px'
                     }}
                 />
 
-                <div className="max-w-[1411px] mx-auto px-6 relative z-10">
+                {/* Ambient Green Glow - Focused on the left */}
+                <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none overflow-hidden">
+                    <div className="absolute top-[10%] -left-[10%] w-[50%] h-[80%] bg-[#2EFFA1]/15 blur-[100px] rounded-full" />
+                </div>
+
+                <div className="relative z-10 px-8 py-20 lg:py-24 lg:px-20">
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-20">
                         {/* Left: Content Area */}
                         <div className="flex flex-col gap-[30px] items-start lg:w-1/2">
@@ -32,9 +29,9 @@ const CTA = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className="font-cabinet font-bold text-[52px] text-white tracking-[-1.56px] leading-[1.1] md:leading-[62px] capitalize"
+                                    className="font-cabinet font-bold text-[52px] text-white tracking-[-1.56px] leading-[1.1] md:leading-[62px]"
                                 >
-                                    Ready to Turn More leads into revenue?
+                                    Ready To Turn More Leads Into Revenue?
                                 </motion.h2>
 
                                 <motion.div
@@ -60,38 +57,43 @@ const CTA = () => {
                                 transition={{ delay: 0.2 }}
                                 className="flex flex-col sm:flex-row gap-[24px] items-center pt-4"
                             >
-                                <button
-                                    className="h-[72.66px] px-[20.76px] py-[23.35px] rounded-[90px] flex items-center gap-[10.38px] transition-all hover:scale-105"
-                                    style={{
-                                        backgroundImage: "linear-gradient(99.06deg, rgba(255, 255, 255, 0.13) 6%, rgba(255, 255, 255, 0.24) 90.8%)",
-                                        border: "1px solid rgba(255, 255, 255, 0.1)"
-                                    }}
-                                >
-                                    <span className="font-inter font-bold text-[19.46px] text-white capitalize leading-none pt-0.5">
-                                        Test the Demo
-                                    </span>
-                                    <div className="w-[51.9px] h-[51.9px] bg-accent-green rounded-full flex items-center justify-center shrink-0 shadow-lg shadow-accent-green/20">
-                                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1">
-                                            <path d="M18 10L0 20V0L18 10Z" fill="#000000" />
-                                        </svg>
-                                    </div>
-                                </button>
+                                <Link to="/demo">
+                                    <button
+                                        className="h-[76px] px-[24px] py-[20px] rounded-[90px] flex items-center gap-[12px] transition-all hover:scale-105 active:scale-95"
+                                        style={{
+                                            backgroundImage: "linear-gradient(99.06deg, rgba(255, 255, 255, 0.1) 6%, rgba(255, 255, 255, 0.15) 90.8%)",
+                                            border: "1px solid rgba(255, 255, 255, 0.1)",
+                                            backdropFilter: "blur(10px)"
+                                        }}
+                                    >
+                                        <span className="font-inter font-bold text-[19px] text-white leading-none">
+                                            Test The Demo
+                                        </span>
+                                        <div className="w-[48px] h-[48px] bg-accent-green rounded-full flex items-center justify-center shrink-0 shadow-lg shadow-accent-green/20">
+                                            <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1">
+                                                <path d="M18 10L0 20V0L18 10Z" fill="#000000" />
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </Link>
 
-                                <button className="bg-white h-[72.66px] px-[20.76px] py-[23.35px] rounded-[90px] font-inter font-bold text-[19.46px] text-primary flex items-center justify-center hover:scale-105 transition-transform">
-                                    Book A Call With Us
-                                </button>
+                                <Link to="/contact">
+                                    <button className="bg-white h-[76px] px-[32px] rounded-[90px] font-inter font-bold text-[19px] text-primary flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl">
+                                        Book A Call With Us
+                                    </button>
+                                </Link>
                             </motion.div>
                         </div>
 
                         {/* Right: Mockups Area — natural flex layout, no clipping */}
-                        <div className="lg:w-1/2 flex items-end justify-center lg:justify-end gap-4 pt-8">
+                        <div className="lg:w-1/2 flex items-end justify-center lg:justify-end gap-2 pt-8 lg:pr-4">
                             {/* Mobile 1 (Main, Taller) */}
                             <motion.div
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
-                                className="w-[48%] max-w-[240px] shrink-0"
+                                className="w-[46%] max-w-[250px] shrink-0"
                             >
                                 <img
                                     src="/assets/mobile-1.svg"
@@ -106,7 +108,7 @@ const CTA = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 1, delay: 0.15, ease: [0.23, 1, 0.32, 1] }}
-                                className="w-[42%] max-w-[200px] shrink-0 opacity-90"
+                                className="w-[42%] max-w-[210px] shrink-0 opacity-90"
                             >
                                 <img
                                     src="/assets/mobile-2.svg"

@@ -48,12 +48,12 @@ const HowItWorks = () => {
     const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
     return (
-        <section ref={sectionRef} id="how-it-works" className="py-32 bg-[#FAFAFA] overflow-hidden">
+        <section ref={sectionRef} id="how-it-works" className="py-32 bg-[#FAFAFA]">
             <div className="max-w-[1411px] mx-auto px-6">
                 <div className="flex flex-col lg:flex-row gap-20 relative">
 
                     {/* ── Left: Sticky Content ── */}
-                    <div className="lg:w-[45%] lg:sticky lg:top-32 self-start space-y-8">
+                    <div className="lg:w-[45%] lg:sticky lg:top-[160px] self-start space-y-8 h-fit">
 
                         {/* Badge */}
                         <motion.div
@@ -108,14 +108,14 @@ const HowItWorks = () => {
                     </div>
 
                     {/* ── Right: Vertical Timeline ── */}
-                    <div ref={containerRef} className="lg:w-[55%] relative pl-12 md:pl-20">
+                    <div ref={containerRef} className="lg:w-[55%] relative pl-12 md:pl-20 pb-[20vh]">
                         {/* Static grey line */}
-                        <div className="absolute left-[24px] md:left-[40px] top-[40px] bottom-[200px] w-[2px] bg-black/5 z-0" />
+                        <div className="absolute left-[24px] md:left-[40px] top-[40px] bottom-[50px] w-[2px] -translate-x-1/2 bg-black/5 z-0" />
 
                         {/* Scroll-driven green fill */}
                         <motion.div
                             style={{ scaleY, originY: 0 }}
-                            className="absolute left-[24px] md:left-[40px] top-[40px] bottom-[200px] w-[2px] bg-accent-green z-10 shadow-[0_0_15px_rgba(46,255,161,0.5)]"
+                            className="absolute left-[24px] md:left-[40px] top-[40px] bottom-[50px] w-[2px] -translate-x-1/2 bg-accent-green z-10 shadow-[0_0_15px_rgba(46,255,161,0.5)]"
                         />
 
                         <div className="space-y-[48px]">
@@ -124,7 +124,7 @@ const HowItWorks = () => {
                                     key={i}
                                     initial={{ opacity: 0, x: 40 }}
                                     whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true, margin: "-80px" }}
+                                    viewport={{ once: true, margin: "-100px" }}
                                     transition={{
                                         duration: 0.85,
                                         delay: i * 0.08,
@@ -164,11 +164,18 @@ const HowItWorks = () => {
                                         />
                                     </div>
 
+
                                     {/* Step Card */}
                                     <motion.div
+                                        whileInView={{ 
+                                            scale: 1.02,
+                                            borderColor: "rgba(46, 255, 161, 0.3)",
+                                            boxShadow: "0 20px 48px rgba(0,0,0,0.06)"
+                                        }}
+                                        viewport={{ margin: "-20% 0% -60% 0%" }}
                                         whileHover={{ y: -4, boxShadow: "0 12px 40px rgba(0,0,0,0.07)" }}
-                                        transition={{ duration: 0.3 }}
-                                        className="bg-white p-10 rounded-[32px] shadow-[0_4px_24px_rgba(0,0,0,0.03)] border border-black/[0.03] space-y-8 hover:border-accent-green/30 transition-colors duration-500"
+                                        transition={{ duration: 0.4 }}
+                                        className="bg-white p-10 rounded-[32px] shadow-[0_4px_24px_rgba(0,0,0,0.03)] border border-black/[0.03] space-y-8 transition-all duration-500"
                                     >
                                         <div className="space-y-4">
                                             <motion.span

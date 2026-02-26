@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 import AboutHero from '../components/AboutHero';
 import CoreValues from '../components/CoreValues';
 import WhyWeBuilt from '../components/WhyWeBuilt';
-import CTA from '../components/CTA';
 import WhatWeDo from '../components/WhatWeDo';
 import SecondaryCTA from '../components/SecondaryCTA';
 
 const About = () => {
     return (
-        <div className="bg-background">
+        <div className="bg-[#efefef]">
             <AboutHero />
 
             {/* Why We Built Section */}
@@ -185,10 +184,7 @@ const About = () => {
 
             <CoreValues />
 
-            {/* Secondary CTA Section */}
             <SecondaryCTA />
-
-            <CTA />
         </div>
     );
 };

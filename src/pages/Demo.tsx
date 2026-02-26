@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 
 const DemoForm = () => {
@@ -48,14 +49,15 @@ const DemoForm = () => {
                                 </div>
 
                                 <div className="flex flex-wrap gap-4 pt-4">
-                                    <motion.a
-                                        href="/"
-                                        whileHover={{ scale: 1.02 }}
-                                        whileTap={{ scale: 0.98 }}
-                                        className="px-8 py-4 bg-[#0f172a] text-white rounded-full font-cabinet font-bold text-[16px] transition-all hover:bg-[#1e293b] shadow-md"
-                                    >
-                                        Back to Homepage
-                                    </motion.a>
+                                    <Link to="/">
+                                        <motion.button
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            className="px-8 py-4 bg-[#0f172a] text-white rounded-full font-cabinet font-bold text-[16px] transition-all hover:bg-[#1e293b] shadow-md"
+                                        >
+                                            Back to Homepage
+                                        </motion.button>
+                                    </Link>
                                     <motion.button
                                         onClick={() => setFormSubmitted(false)}
                                         whileHover={{ scale: 1.02 }}
@@ -130,7 +132,7 @@ const DemoForm = () => {
                                             </svg>
                                         </div>
                                         <label htmlFor="privacy-demo" className="text-[13px] text-[#64748b] leading-snug">
-                                            By submitting, you agree to receive messages via WhatsApp, SMS, or email to run the demo, and you accept our <a href="/privacy" className="text-[#0f172a] hover:underline">[Privacy Policy]</a> and <a href="/terms" className="text-[#0f172a] hover:underline">[Terms & Conditions]</a>.
+                                            By submitting, you agree to receive messages via WhatsApp, SMS, or email to run the demo, and you accept our <Link to="/privacy-policy" className="text-[#0f172a] hover:underline">[Privacy Policy]</Link> and <Link to="/terms-and-conditions" className="text-[#0f172a] hover:underline">[Terms & Conditions]</Link>.
                                         </label>
                                     </div>
 
@@ -156,19 +158,20 @@ const DemoForm = () => {
                             }
                         </h3>
 
-                        <motion.a
-                            href="/contact"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="inline-flex items-center gap-4 bg-[#0f172a] text-white pl-8 pr-2 py-2 rounded-full font-cabinet font-bold text-[16px] transition-all hover:bg-[#1e293b] group"
-                        >
-                            Book a Strategy Call
-                            <span className="w-10 h-10 rounded-full bg-[#2EFFA1] flex items-center justify-center shrink-0">
-                                <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-                                    <path d="M3 8h10M9 4l4 4-4 4" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </span>
-                        </motion.a>
+                        <Link to="/contact">
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="inline-flex items-center gap-4 bg-[#0f172a] text-white pl-8 pr-2 py-2 rounded-full font-cabinet font-bold text-[16px] transition-all hover:bg-[#1e293b] group"
+                            >
+                                Book a Strategy Call
+                                <span className="w-10 h-10 rounded-full bg-[#2EFFA1] flex items-center justify-center shrink-0">
+                                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                                        <path d="M3 8h10M9 4l4 4-4 4" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </span>
+                            </motion.button>
+                        </Link>
                     </div>
                 </div>
 
@@ -179,7 +182,7 @@ const DemoForm = () => {
 
 const Demo = () => {
     return (
-        <div className="bg-black pt-[64.8px]">
+        <div className="bg-[#efefef]">
             <PageHero title="Ready To Try The" accent="Demo?" />
             <DemoForm />
         </div>
