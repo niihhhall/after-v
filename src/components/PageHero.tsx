@@ -38,7 +38,7 @@ const PageHero = ({ title, accent, subtitle }: PageHeroProps) => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1] }}
-                        className="font-cabinet font-bold text-[64px] md:text-[80px] text-white leading-none"
+                        className="font-cabinet font-bold text-[36px] min-[400px]:text-[48px] md:text-[80px] text-white leading-[1.1] md:leading-none"
                     >
                         {title}{' '}
                         <span className="text-[#2EFFA1]">{accent}</span>

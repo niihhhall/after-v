@@ -457,7 +457,7 @@ const Contact = () => {
                                                     hover: { backgroundColor: '#2EFFA1', scale: 1.02 }
                                                 }}
                                                 transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
-                                                className="relative px-14 py-4 md:py-5 rounded-full font-cabinet font-bold text-[18px] w-full md:w-auto overflow-hidden flex items-center justify-center gap-3 text-white"
+                                                className="relative px-14 py-4 md:py-5 rounded-full font-cabinet font-bold text-[16px] md:text-[18px] w-full md:w-auto overflow-hidden flex items-center justify-center gap-3 text-white"
                                             >
                                                 <span>Submit Enquiry</span>
 
@@ -538,7 +538,7 @@ const Contact = () => {
                         className="flex-1 py-10 px-8 flex flex-col items-center justify-center text-center gap-4 transition-all"
                     >
                         <span className="text-[#94a3b8] text-[14px] uppercase tracking-[0.2em] font-cabinet font-bold">Address</span>
-                        <p className="text-[#0f172a] text-[20px] md:text-[22px] font-bold font-cabinet leading-[1.3] max-w-[340px]">
+                        <p className="text-[#0f172a] text-[18px] md:text-[22px] font-bold font-cabinet leading-[1.3] max-w-[340px]">
                             71–75 Shelton Street, Covent Garden, London, WC2H 9JQ United Kingdom
                         </p>
                     </motion.div>

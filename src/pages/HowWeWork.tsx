@@ -16,8 +16,8 @@ const HowWeWorkAudit = () => {
                     transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
                     className="lg:w-[45%] shrink-0"
                 >
-                    <h2 className="font-cabinet font-bold text-[54px] text-primary leading-[1.1] tracking-[-1.5px]">
-                        We prioritise the audit.<br />
+                    <h2 className="font-cabinet font-bold text-[36px] md:text-[54px] text-primary leading-[1.1] tracking-tight md:tracking-[-1.5px]">
+                        We prioritise the audit.<br className="hidden md:block" />
                         Is it a fit for your business?
                     </h2>
                 </motion.div>

@@ -60,7 +60,7 @@ const SpeedToLead = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="font-cabinet font-bold text-[54px] text-white leading-[1.1] tracking-[-1.5px] max-w-[1033px]"
+                        className="font-cabinet font-bold text-[40px] md:text-[54px] text-white leading-[1.1] tracking-tight md:tracking-[-1.5px] max-w-[1033px]"
                     >
                         Speed is the difference between a lead and a lost opportunity.
                     </motion.h2>

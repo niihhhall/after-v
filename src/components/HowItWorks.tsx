@@ -69,7 +69,7 @@ const HowItWorks = () => {
                         {/* Heading — letter stagger */}
                         <h2
                             ref={headingRef}
-                            className="font-cabinet font-bold text-[64px] text-primary leading-[1] tracking-[-3px] max-w-[644px]"
+                            className="font-cabinet font-bold text-[42px] md:text-[64px] text-primary leading-[1.1] md:leading-[1] tracking-tight md:tracking-[-3px] max-w-[644px]"
                         >
                             {["How our process would", "look for you in practice."].map((line, li) => (
                                 <span key={li} className="block overflow-hidden">

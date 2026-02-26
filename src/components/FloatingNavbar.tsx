@@ -1,9 +1,19 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const FloatingNavbar = () => {
     const [scrolled, setScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    // Prevent scrolling when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+    }, [isMobileMenuOpen]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -30,17 +40,17 @@ const FloatingNavbar = () => {
         >
             <div
                 className={`
-                    relative flex items-center
+                    relative flex items-center justify-between md:justify-start
                     w-full max-w-[1143px] h-[64.8px]
                     bg-white/80 backdrop-blur-xl
                     rounded-[66px] border border-white/20
-                    transition-all duration-300
+                    transition-all duration-300 px-[26.5px] md:px-0
                     ${scrolled ? "shadow-[0_20px_40px_-12px_rgba(0,0,0,0.1)] scale-[0.98]" : "shadow-[0_12px_30px_-10px_rgba(0,0,0,0.05)]"}
                 `}
             >
                 {/* Logo Section - Official SVG Logo */}
-                <div className="absolute left-[26.5px] top-[17px] flex items-center">
-                    <Link to="/">
+                <div className="md:absolute md:left-[26.5px] md:top-[17px] flex items-center">
+                    <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
                         <img
                             src="/assets/v-logo.svg"
                             alt="after5 logo"
@@ -49,7 +59,26 @@ const FloatingNavbar = () => {
                     </Link>
                 </div>
 
-                {/* Navigation Links - Precise 149px left offset */}
+                {/* Mobile Hamburger Button */}
+                <button
+                    className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none z-50"
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                >
+                    <motion.span
+                        animate={isMobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                        className="block w-6 h-0.5 bg-primary transition-transform duration-300 origin-center"
+                    />
+                    <motion.span
+                        animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                        className="block w-6 h-0.5 bg-primary transition-opacity duration-300"
+                    />
+                    <motion.span
+                        animate={isMobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                        className="block w-6 h-0.5 bg-primary transition-transform duration-300 origin-center"
+                    />
+                </button>
+
+                {/* Navigation Links - Desktop */}
                 <div className="hidden md:flex absolute left-[149px] top-1/2 -translate-y-[calc(50%+0.4px)] items-center gap-[18px]">
                     {navLinks.map((link) => (
                         link.href.startsWith("/") ? (
@@ -72,8 +101,8 @@ const FloatingNavbar = () => {
                     ))}
                 </div>
 
-                {/* CTA Button - Precise right alignment */}
-                <div className="flex items-center absolute right-[4px] top-1/2 -translate-y-1/2">
+                {/* CTA Button - Desktop */}
+                <div className="hidden md:flex items-center absolute right-[4px] top-1/2 -translate-y-1/2">
                     <Link to="/contact">
                         <motion.button
                             whileHover="hover"
@@ -99,7 +128,7 @@ const FloatingNavbar = () => {
                                 variants={{
                                     rest: { x: '-110%', skewX: -15 },
                                     hover: { x: '210%', skewX: -15 }
-                                }}
+                                } }
                                 transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
                                 className="absolute inset-0 w-1/2 bg-[#2EFFA1]/50 blur-sm pointer-events-none"
                             />
@@ -111,7 +140,7 @@ const FloatingNavbar = () => {
                                 variants={{
                                     rest: { x: -6, opacity: 0 },
                                     hover: { x: 0, opacity: 1 }
-                                }}
+                                } }
                                 transition={{ duration: 0.25 }}
                                 className="relative z-10 w-4 h-4"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -124,8 +153,45 @@ const FloatingNavbar = () => {
                     </Link>
                 </div>
             </div>
+
+            {/* Mobile Menu Overlay */}
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className="md:hidden absolute top-[calc(100%+10px)] left-4 right-4 bg-white rounded-[24px] shadow-2xl border border-black/5 overflow-hidden flex flex-col"
+                    >
+                        <div className="flex flex-col p-6 gap-6">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    to={link.href}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="font-cabinet font-bold text-2xl text-primary border-b border-black/5 pb-4 last:border-0"
+                                >
+                                    {link.name}
+                                </Link>
+                            ))}
+                            
+                            <Link 
+                                to="/contact" 
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="mt-4"
+                            >
+                                <button className="w-full bg-primary text-white font-inter font-bold h-[60px] rounded-full text-[16px] flex items-center justify-center">
+                                    Book a Call
+                                </button>
+                            </Link>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.nav>
     );
 };
 
 export default FloatingNavbar;
+

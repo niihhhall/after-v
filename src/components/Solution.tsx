@@ -113,7 +113,7 @@ const Solution = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="font-cabinet font-bold text-[54px] text-primary leading-[1.1] tracking-[-3px] max-w-[884px]"
+                        className="font-cabinet font-bold text-[40px] md:text-[54px] text-primary leading-[1.1] tracking-tight md:tracking-[-3px] max-w-[884px]"
                     >
                         Our systems operate between your leads and your sales team.
                     </motion.h2>

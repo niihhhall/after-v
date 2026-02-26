@@ -55,30 +55,30 @@ const CTA = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="flex flex-col sm:flex-row gap-[24px] items-center pt-4"
+                                className="flex flex-col sm:flex-row gap-[16px] sm:gap-[24px] items-center pt-4 w-full sm:w-auto"
                             >
-                                <Link to="/demo">
+                                <Link to="/demo" className="w-full sm:w-auto">
                                     <button
-                                        className="h-[76px] px-[24px] py-[20px] rounded-[90px] flex items-center gap-[12px] transition-all hover:scale-105 active:scale-95"
+                                        className="w-full sm:w-auto h-[64px] md:h-[76px] px-[20px] md:px-[24px] py-[16px] md:py-[20px] rounded-[90px] flex items-center justify-center gap-[12px] transition-all hover:scale-105 active:scale-95"
                                         style={{
                                             backgroundImage: "linear-gradient(99.06deg, rgba(255, 255, 255, 0.1) 6%, rgba(255, 255, 255, 0.15) 90.8%)",
                                             border: "1px solid rgba(255, 255, 255, 0.1)",
                                             backdropFilter: "blur(10px)"
                                         }}
                                     >
-                                        <span className="font-inter font-bold text-[19px] text-white leading-none">
+                                        <span className="font-inter font-bold text-[16px] md:text-[19px] text-white leading-none whitespace-nowrap">
                                             Test The Demo
                                         </span>
-                                        <div className="w-[48px] h-[48px] bg-accent-green rounded-full flex items-center justify-center shrink-0 shadow-lg shadow-accent-green/20">
-                                            <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1">
+                                        <div className="w-[40px] h-[40px] md:w-[48px] md:h-[48px] bg-accent-green rounded-full flex items-center justify-center shrink-0 shadow-lg shadow-accent-green/20">
+                                            <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1 w-[14px] md:w-[18px]">
                                                 <path d="M18 10L0 20V0L18 10Z" fill="#000000" />
                                             </svg>
                                         </div>
                                     </button>
                                 </Link>
 
-                                <Link to="/contact">
-                                    <button className="bg-white h-[76px] px-[32px] rounded-[90px] font-inter font-bold text-[19px] text-primary flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl">
+                                <Link to="/contact" className="w-full sm:w-auto">
+                                    <button className="w-full sm:w-auto bg-white h-[64px] md:h-[76px] px-[24px] md:px-[32px] rounded-[90px] font-inter font-bold text-[16px] md:text-[19px] text-primary flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-xl whitespace-nowrap">
                                         Book A Call With Us
                                     </button>
                                 </Link>
