@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #F6F6F6;
+  --color-primary: #000000;
+  --color-accent-green: #269262;
+  --color-sidebar: #222e38;
+  --font-cabinet: "Cabinet Grotesk", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+@layer base {
+  html {
+    zoom: 0.8;
+  }
+
+  body {
+    @apply bg-background text-primary antialiased;
+    font-family: "Inter", sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Cabinet Grotesk", sans-serif;
+  }
+}
+
+@layer components {
+  .container-dashboard {
+    @apply max-w-[1411px] mx-auto w-full;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+/* 
+  FIX: Hide any Calendly widgets that are injected outside of the React root 
+  (e.g., as siblings or direct children of body) which prevents them 
+  from showing up below the footer on every page.
+*/
+#root ~ .calendly-inline-widget,
+#root ~ [class*="calendly"],
+body > .calendly-inline-widget {
+    display: none !important;
+}
+
+/* Ensure the widget stays hidden if it's somehow not a sibling but still root-level */
+#root + div[style*="position: fixed"] {
+    display: none !important;
+}
