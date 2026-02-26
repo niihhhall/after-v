@@ -121,7 +121,7 @@ const Solution = () => {
 
                     <motion.button
                         initial={{ opacity: 0, scale: 1 }}
-                        whileHover={{ scale: 1.05, backgroundColor: "#2EFFa1", borderColor: "#2EFFa1" }}
+                        whileHover={{ scale: 1.05, backgroundColor: "#2EFFA1", borderColor: "#2EFFA1" }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}

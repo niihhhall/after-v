@@ -72,7 +72,7 @@ const WhereAfter5Fits = () => {
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="bg-[#36d78e]/10 px-4 py-2 rounded-full border border-[#36d78e]/20"
+                        className="bg-[#2EFFA1]/10 px-4 py-2 rounded-full border border-[#2EFFA1]/20"
                     >
                         <span className="text-primary text-sm font-medium tracking-tight uppercase">Where After5 Fits</span>
                     </motion.div>
@@ -121,7 +121,7 @@ const WhereAfter5Fits = () => {
                         <p className="font-inter text-3xl text-primary">Ready to get started?</p>
                         <button className="group flex items-center gap-6 bg-[#111827] text-white px-10 py-6 rounded-full font-bold text-xl hover:bg-black transition-all duration-300">
                             Book a Discovery Call
-                            <div className="w-12 h-12 rounded-full bg-[#36d78e] flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <div className="w-12 h-12 rounded-full bg-[#2EFFA1] flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <motion.div
                                     animate={{ x: [0, 5, 0] }}
                                     transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
