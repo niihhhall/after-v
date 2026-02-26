@@ -28,7 +28,7 @@ const PageHero = ({ title, accent, subtitle }: PageHeroProps) => {
 
             {/* Ambient green glow */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px] bg-[#36d78e]/10 blur-[150px] rounded-full opacity-50" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[600px] bg-[#2EFFA1]/10 blur-[150px] rounded-full opacity-50" />
             </div>
 
             {/* Heading */}
@@ -40,7 +40,7 @@ const PageHero = ({ title, accent, subtitle }: PageHeroProps) => {
                     className="font-cabinet font-bold text-[64px] md:text-[80px] text-white leading-none tracking-[-0.04em] uppercase"
                 >
                     {title}{' '}
-                    <span className="text-[#36d78e]">{accent}</span>
+                    <span className="text-[#2EFFA1]">{accent}</span>
                 </motion.h1>
 
                 {subtitle && (

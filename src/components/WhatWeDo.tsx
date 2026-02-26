@@ -21,7 +21,7 @@ const WhatWeDo = () => {
                 className="flex flex-col items-center gap-6 mb-16 md:mb-24 text-center max-w-[900px]"
             >
                 {/* Badge */}
-                <div className="inline-flex px-[18px] py-[10px] bg-[rgba(46,255,161,0.15)] text-primary rounded-[100px] font-inter font-medium text-[16px] tracking-[-0.3px]">
+                <div className="inline-flex px-[18px] py-[10px] bg-[#2EFFA1]/15 text-primary rounded-[100px] font-inter font-medium text-[16px] tracking-[-0.3px]">
                     What We Do
                 </div>
 
@@ -42,7 +42,7 @@ const WhatWeDo = () => {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="w-full lg:w-1/2 flex justify-start"
                 >
-                    <div className="w-full max-w-[580px] bg-[#b5e7cc] rounded-[28px] p-10 md:p-14 flex flex-col items-center gap-14 border border-[#aaddc2]/50">
+                    <div className="w-full max-w-[580px] bg-[#2EFFA1]/30 rounded-[28px] p-10 md:p-14 flex flex-col items-center gap-14 border border-[#2EFFA1]/20">
 
                         {/* Top Chat Bubble */}
                         <motion.div
@@ -59,7 +59,7 @@ const WhatWeDo = () => {
                                     <span className="text-white font-inter font-bold text-[14px] tracking-tight">Thomas A.</span>
                                     <div className="flex items-center gap-[8px] mt-0.5">
                                         <span className="text-white/50 font-inter text-[12px] tracking-[-0.1px]">Says hi to you</span>
-                                        <div className="w-[18px] h-[18px] rounded-full bg-[#36a877] flex items-center justify-center">
+                                        <div className="w-[18px] h-[18px] rounded-full bg-[#2EFFA1] flex items-center justify-center">
                                             <span className="text-[#1a1c29] font-bold text-[10px]">1</span>
                                         </div>
                                     </div>
@@ -92,10 +92,10 @@ const WhatWeDo = () => {
                                 {/* SVG Chart Background Area */}
                                 <svg viewBox="0 0 500 180" className="w-full h-full" preserveAspectRatio="none">
                                     {/* Light green base area */}
-                                    <path d="M0 180 L0 80 L30 140 L70 120 L80 120 L110 170 L140 130 L180 160 L220 140 L230 150 L250 110 L280 115 L300 160 L320 120 L350 100 L370 110 L390 100 L420 50 L450 50 L480 10 L500 5 L500 180 Z" fill="#b0f0cc" />
+                                    <path d="M0 180 L0 80 L30 140 L70 120 L80 120 L110 170 L140 130 L180 160 L220 140 L230 150 L250 110 L280 115 L300 160 L320 120 L350 100 L370 110 L390 100 L420 50 L450 50 L480 10 L500 5 L500 180 Z" fill="#2EFFA1" fillOpacity="0.2" />
 
                                     {/* Slightly darker highlighted overlay from 'Aug' onwards */}
-                                    <path d="M280 180 L280 115 L300 160 L320 120 L350 100 L370 110 L390 100 L420 50 L450 50 L480 10 L500 5 L500 180 Z" fill="#9debbf" className="opacity-90" />
+                                    <path d="M280 180 L280 115 L300 160 L320 120 L350 100 L370 110 L390 100 L420 50 L450 50 L480 10 L500 5 L500 180 Z" fill="#2EFFA1" fillOpacity="0.4" />
 
                                     {/* Line path overlay (approximate match to your graph shape) */}
                                     <path d="M0 80 L30 140 L70 120 L80 120 L110 170 L140 130 L180 160 L220 140 L230 150 L250 110 L280 115 L300 160 L320 120 L350 100 L370 110 L390 100 L420 50 L450 50 L480 10 L500 5" fill="none" stroke="#e0e0e0" strokeWidth="2.5" strokeLinejoin="round" />
@@ -107,7 +107,7 @@ const WhatWeDo = () => {
                                 <div className="absolute top-[61%] right-[31.4%] w-[8px] h-[8px] bg-[#e6e6e6] rounded-full border-2 border-white z-10 shadow-sm"></div>
 
                                 {/* Tooltip Overlay */}
-                                <div className="absolute top-[2%] right-[15%] min-w-[145px] bg-[#eaf8f0] border-l-[3px] border-[#81e2aa] py-[10px] px-[14px]">
+                                <div className="absolute top-[2%] right-[15%] min-w-[145px] bg-[#2EFFA1]/10 border-l-[3px] border-[#2EFFA1] py-[10px] px-[14px]">
                                     <div className="font-inter font-bold text-[12px] text-black tracking-[-0.2px]">2:45 PM</div>
                                     <div className="font-inter font-semibold text-[12px] text-black leading-[1.3] tracking-[-0.2px] mt-1">
                                         13 conversations<br />qualified
@@ -157,14 +157,14 @@ const WhatWeDo = () => {
                     </div>
 
                     {/* Card 3 (Green) */}
-                    <div className="bg-[#449c71] rounded-[20px] p-10 flex flex-col gap-8 shadow-[0_20px_50px_rgba(68,156,113,0.3)]">
+                    <div className="bg-[#2EFFA1] rounded-[20px] p-10 flex flex-col gap-8 shadow-[0_20px_50px_rgba(46,255,161,0.3)]">
                         {/* Custom Dark Icon for Green Card */}
                         <div className="relative w-8 h-8">
-                            <AppWindow size={28} className="text-[#184a30] absolute top-0 left-0" strokeWidth={1.5} />
-                            <MousePointer2 size={18} className="text-[#184a30] absolute bottom-[-4px] right-[4px] fill-[#184a30]" strokeWidth={2} />
+                            <AppWindow size={28} className="text-primary absolute top-0 left-0" strokeWidth={1.5} />
+                            <MousePointer2 size={18} className="text-primary absolute bottom-[-4px] right-[4px] fill-primary" strokeWidth={2} />
                         </div>
-                        <p className="font-inter text-[18px] md:text-[20px] text-[#1a5a3a] leading-[1.4] tracking-[-0.2px]">
-                            We make sure the leads you already have <span className="font-extrabold text-[#113a25]">stay warm, get qualified</span> and <span className="font-extrabold text-[#113a25]">turn into revenue.</span>
+                        <p className="font-inter text-[18px] md:text-[20px] text-primary leading-[1.4] tracking-[-0.2px]">
+                            We make sure the leads you already have <span className="font-extrabold text-primary">stay warm, get qualified</span> and <span className="font-extrabold text-primary">turn into revenue.</span>
                         </p>
                     </div>
                 </motion.div>

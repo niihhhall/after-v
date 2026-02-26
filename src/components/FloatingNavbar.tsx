@@ -90,7 +90,7 @@ const FloatingNavbar = () => {
                         <motion.span
                             animate={{ scale: [1, 1.6, 1], opacity: [0.25, 0, 0.25] }}
                             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute inset-0 rounded-[52px] bg-[#36d78e]/30 pointer-events-none"
+                            className="absolute inset-0 rounded-[52px] bg-[#2EFFA1]/30 pointer-events-none"
                         />
 
                         {/* Green shimmer sweep on hover */}
@@ -100,7 +100,7 @@ const FloatingNavbar = () => {
                                 hover: { x: '210%', skewX: -15 }
                             }}
                             transition={{ duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
-                            className="absolute inset-0 w-1/2 bg-[#36d78e]/50 blur-sm pointer-events-none"
+                            className="absolute inset-0 w-1/2 bg-[#2EFFA1]/50 blur-sm pointer-events-none"
                         />
 
                         <span className="relative z-10">Book a Call</span>

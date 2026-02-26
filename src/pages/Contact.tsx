@@ -59,7 +59,7 @@ const Contact = () => {
 
         if ((window as any).Calendly) {
             (window as any).Calendly.initInlineWidget({
-                url: 'https://calendly.com/after5/ai-sales-agent-discovery-call?primary_color=2fffa1&hide_landing_page_details=1&hide_gdpr_banner=1',
+                url: 'https://calendly.com/after5/ai-sales-agent-discovery-call?primary_color=2effa1&hide_landing_page_details=1&hide_gdpr_banner=1',
                 parentElement: document.querySelector('.calendly-inline-widget'),
                 prefill: {},
                 utm: {}
@@ -96,7 +96,7 @@ const Contact = () => {
                                     transition={{ duration: 0.6, delay: 0.2 }}
                                     className="font-cabinet font-bold text-[32px] md:text-[36px] text-[#0f172a] leading-[1.1] tracking-tight"
                                 >
-                                    <span className="text-[#36d78e]">Interested in hearing more?</span><br /> You can book a call directly here.
+                                    <span className="text-[#2EFFA1]">Interested in hearing more?</span><br /> You can book a call directly here.
                                 </motion.h2>
                                 <motion.p
                                     initial={{ opacity: 0, x: -20 }}
@@ -142,7 +142,7 @@ const Contact = () => {
                                         className="inline-flex items-center gap-0 bg-[#0f172a] text-white pl-7 pr-1.5 py-2 rounded-full font-inter font-bold text-[16px] transition-all hover:bg-[#1e293b] group"
                                     >
                                         Try the Demo
-                                        <span className="ml-5 w-10 h-10 rounded-full bg-[#36d78e] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(54,215,142,0.3)] group-hover:shadow-[0_0_20px_rgba(54,215,142,0.5)] transition-shadow">
+                                        <span className="ml-5 w-10 h-10 rounded-full bg-[#2EFFA1] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(54,215,142,0.3)] group-hover:shadow-[0_0_20px_rgba(54,215,142,0.5)] transition-shadow">
                                             <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
                                                 <path d="M3 8h10M9 4l4 4-4 4" stroke="#000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
@@ -207,7 +207,7 @@ const Contact = () => {
                                     <div className="relative" style={{ height: `${700 * 0.68}px`, overflow: 'hidden', marginRight: '-1px' }}>
                                         {isCalendlyLoading && (
                                             <div className="absolute inset-0 bg-white z-20 flex flex-col items-center justify-center gap-6">
-                                                <div className="w-12 h-12 border-2 border-[#f1f5f9] border-t-[#36d78e] rounded-full animate-spin" />
+                                                <div className="w-12 h-12 border-2 border-[#f1f5f9] border-t-[#2EFFA1] rounded-full animate-spin" />
                                                 <div className="w-full max-w-[400px] h-[400px] bg-[#f8fafc] rounded-[12px] animate-pulse overflow-hidden relative">
                                                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg] animate-shimmer" />
                                                 </div>
@@ -262,7 +262,7 @@ const Contact = () => {
                                                     damping: 20,
                                                     delay: 0.2
                                                 }}
-                                                className="w-10 h-10 rounded-full bg-[#36d78e] flex items-center justify-center text-white"
+                                                className="w-10 h-10 rounded-full bg-[#2EFFA1] flex items-center justify-center text-white"
                                             >
                                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                                     <motion.path
@@ -363,7 +363,7 @@ const Contact = () => {
                                                             hidden: { opacity: 0, y: 10 },
                                                             visible: { opacity: 1, y: 0 }
                                                         }}
-                                                        className="relative group shadow-[inset_0_-1px_0_0_#e2e8f0] focus-within:shadow-[inset_0_-2px_0_0_#36d78e] transition-all duration-300"
+                                                        className="relative group shadow-[inset_0_-1px_0_0_#e2e8f0] focus-within:shadow-[inset_0_-2px_0_0_#2EFFA1] transition-all duration-300"
                                                     >
                                                         <label className="block text-[11px] font-cabinet font-bold text-[#94a3b8] uppercase tracking-widest mb-1">{field.label}</label>
                                                         {field.type === 'select' ? (
@@ -402,7 +402,7 @@ const Contact = () => {
                                                             hidden: { opacity: 0, y: 10 },
                                                             visible: { opacity: 1, y: 0 }
                                                         }}
-                                                        className="relative group shadow-[inset_0_-1px_0_0_#e2e8f0] focus-within:shadow-[inset_0_-2px_0_0_#36d78e] transition-all duration-300"
+                                                        className="relative group shadow-[inset_0_-1px_0_0_#e2e8f0] focus-within:shadow-[inset_0_-2px_0_0_#2EFFA1] transition-all duration-300"
                                                     >
                                                         <label className="block text-[11px] font-cabinet font-bold text-[#94a3b8] uppercase tracking-widest mb-1">{field.label}</label>
                                                         <input type={field.type} placeholder={field.placeholder} className="w-full bg-transparent py-2 text-[#0f172a] font-cabinet font-bold text-[17px] placeholder:text-[#cbd5e1] focus:outline-none transition-all" />
@@ -416,7 +416,7 @@ const Contact = () => {
                                                 hidden: { opacity: 0, y: 10 },
                                                 visible: { opacity: 1, y: 0 }
                                             }}
-                                            className="relative group shadow-[inset_0_-1px_0_0_#e2e8f0] focus-within:shadow-[inset_0_-2px_0_0_#36d78e] transition-all duration-300"
+                                            className="relative group shadow-[inset_0_-1px_0_0_#e2e8f0] focus-within:shadow-[inset_0_-2px_0_0_#2EFFA1] transition-all duration-300"
                                         >
                                             <label className="block text-[11px] font-cabinet font-bold text-[#94a3b8] uppercase tracking-widest mb-1">Message</label>
                                             <textarea rows={1} placeholder="Tell us more about your needs..." className="w-full bg-transparent py-2 text-[#0f172a] font-cabinet font-bold text-[17px] placeholder:text-[#cbd5e1] focus:outline-none resize-none overflow-hidden min-h-[44px]" />
@@ -430,13 +430,13 @@ const Contact = () => {
                                             className="flex items-center gap-3 pt-2"
                                         >
                                             <div className="relative flex items-center">
-                                                <input type="checkbox" id="privacy" className="peer appearance-none w-5 h-5 border border-[#e2e8f0] rounded bg-white checked:bg-[#36d78e] checked:border-[#36d78e] transition-all cursor-pointer hover:border-[#36d78e]" />
+                                                <input type="checkbox" id="privacy" className="peer appearance-none w-5 h-5 border border-[#e2e8f0] rounded bg-white checked:bg-[#2EFFA1] checked:border-[#2EFFA1] transition-all cursor-pointer hover:border-[#2EFFA1]" />
                                                 <svg className="absolute w-3.5 h-3.5 left-[3px] top-[3px] text-white opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                                 </svg>
                                             </div>
                                             <label htmlFor="privacy" className="text-[13px] text-[#64748b] font-cabinet font-medium cursor-pointer select-none">
-                                                By submitting this form, you agree to our <a href="/privacy" className="text-[#0f172a] font-bold hover:text-[#36d78e] transition-colors underline underline-offset-2">Privacy Policy</a>
+                                                By submitting this form, you agree to our <a href="/privacy" className="text-[#0f172a] font-bold hover:text-[#2EFFA1] transition-colors underline underline-offset-2">Privacy Policy</a>
                                             </label>
                                         </motion.div>
 
@@ -454,7 +454,7 @@ const Contact = () => {
                                                 animate="rest"
                                                 variants={{
                                                     rest: { backgroundColor: '#0f172a', scale: 1 },
-                                                    hover: { backgroundColor: '#36d78e', scale: 1.02 }
+                                                    hover: { backgroundColor: '#2EFFA1', scale: 1.02 }
                                                 }}
                                                 transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
                                                 className="relative px-14 py-4 md:py-5 rounded-full font-cabinet font-bold text-[18px] w-full md:w-auto overflow-hidden flex items-center justify-center gap-3 text-white"
@@ -501,7 +501,7 @@ const Contact = () => {
                         whileInView={{ scaleY: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: 0.5 }}
-                        className="hidden md:block absolute left-[33.33%] top-1/2 -translate-y-1/2 w-[1px] h-[120px] bg-gradient-to-b from-transparent via-[#36d78e]/40 to-transparent origin-center"
+                        className="hidden md:block absolute left-[33.33%] top-1/2 -translate-y-1/2 w-[1px] h-[120px] bg-gradient-to-b from-transparent via-[#2EFFA1]/40 to-transparent origin-center"
                     />
                     <motion.div
                         initial={{ scaleY: 0 }}
