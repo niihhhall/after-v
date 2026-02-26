@@ -54,7 +54,7 @@ const Problem = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            className="font-cabinet font-bold text-[54px] text-primary leading-[1.05] tracking-[-1.5px]"
+                            className="font-cabinet font-bold text-[40px] md:text-[54px] text-primary leading-[1.1] md:leading-[1.05] tracking-tight md:tracking-[-1.5px]"
                         >
                             Leads are slipping away before sales even see them.
                         </motion.h2>

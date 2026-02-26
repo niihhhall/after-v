@@ -74,7 +74,7 @@ const TermsConditions = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-                        className="font-cabinet font-bold text-[64px] md:text-[80px] text-white"
+                        className="font-cabinet font-bold text-[42px] min-[400px]:text-[48px] md:text-[80px] text-white leading-[1.1] md:leading-none"
                     >
                         Terms <span className="text-[#36d78e]">& Conditions</span>
                     </motion.h1>
@@ -114,7 +114,7 @@ const TermsConditions = () => {
                     </div>
 
                     <div id="use-of-the-site" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Use of the Site</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Use of the Site</h2>
                         <div className="space-y-4 text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             <p>You are granted permission to access and use the Site for personal and business informational purposes only. This permission does not constitute a transfer of ownership of any materials on the Site. You must not:</p>
                             <ul className="list-disc pl-6 space-y-2">
@@ -127,21 +127,21 @@ const TermsConditions = () => {
                     </div>
 
                     <div id="services" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Services</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Services</h2>
                         <p className="text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             After5 provides managed enquiry handling and conversion services. Information provided on this Site is for general informational purposes only and does not constitute a binding offer. Any services provided are subject to separate written agreements outlining scope, pricing, and commercial terms.
                         </p>
                     </div>
 
                     <div id="disclaimer" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Disclaimer</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Disclaimer</h2>
                         <p className="text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             The materials on this Site are provided "as is". After5 makes no warranties, expressed or implied, and disclaims all other warranties including, without limitation, implied warranties of merchantability, fitness for a particular purpose, or non-infringement. After5 does not warrant that the Site will be error-free, uninterrupted, or that defects will be corrected.
                         </p>
                     </div>
 
                     <div id="limitation-of-liability" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Limitation of Liability</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Limitation of Liability</h2>
                         <div className="space-y-4 text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             <p>To the fullest extent permitted by law, After5 shall not be liable for any damages arising out of or related to the use or inability to use this Site, including but not limited to:</p>
                             <ul className="list-disc pl-6 space-y-2">
@@ -154,21 +154,21 @@ const TermsConditions = () => {
                     </div>
 
                     <div id="accuracy-of-materials" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Accuracy of Materials</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Accuracy of Materials</h2>
                         <p className="text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             The materials appearing on this Site may include technical, typographical, or factual errors. After5 does not warrant that any materials on the Site are accurate, complete, or current. Content may be updated or changed at any time without notice.
                         </p>
                     </div>
 
                     <div id="links-to-other-websites" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Links to Other Websites</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Links to Other Websites</h2>
                         <p className="text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             This Site may contain links to third-party websites. After5 has not reviewed all such sites and is not responsible for their content or practices. The inclusion of any link does not imply endorsement. Use of any linked site is at your own risk.
                         </p>
                     </div>
 
                     <div id="cancellation-and-refunds" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Cancellation and Refunds</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Cancellation and Refunds</h2>
                         <div className="space-y-4 text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             <p>Cancellation terms and any applicable refunds are governed by the specific written agreement entered into between After5 and the client.</p>
                             <p>Unless otherwise stated in writing, services are non-refundable once delivery or setup has commenced.</p>
@@ -176,21 +176,21 @@ const TermsConditions = () => {
                     </div>
 
                     <div id="governing-law" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Governing Law</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Governing Law</h2>
                         <p className="text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             These Terms and Conditions are governed by and construed in accordance with the laws of England and Wales. Any disputes arising in connection with these terms shall be subject to the exclusive jurisdiction of the courts of England and Wales.
                         </p>
                     </div>
 
                     <div id="changes-to-these-terms" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Changes to These Terms</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Changes to These Terms</h2>
                         <p className="text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             After5 reserves the right to revise these Terms and Conditions at any time without notice. Continued use of the Site following any changes constitutes acceptance of the updated terms. Users are encouraged to review this page periodically.
                         </p>
                     </div>
 
                     <div id="contact-information" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Contact Information</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Contact Information</h2>
                         <div className="space-y-4 text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             <p>If you have any questions about these Terms and Conditions, contact us at:</p>
                             <div className="space-y-1">

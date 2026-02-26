@@ -73,7 +73,7 @@ const PrivacyPolicy = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-                        className="font-cabinet font-bold text-[64px] md:text-[80px] text-white"
+                        className="font-cabinet font-bold text-[42px] min-[400px]:text-[48px] md:text-[80px] text-white leading-[1.1] md:leading-none"
                     >
                         Privacy <span className="text-[#36d78e]">Policy</span>
                     </motion.h1>
@@ -113,7 +113,7 @@ const PrivacyPolicy = () => {
                     </div>
 
                     <div id="information-we-collect" className="space-y-8 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Information We Collect</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Information We Collect</h2>
                         <div className="space-y-8">
                             <div className="space-y-4">
                                 <h3 className="font-inter font-semibold text-[22px]">Personal Information</h3>
@@ -152,14 +152,14 @@ const PrivacyPolicy = () => {
                     </div>
 
                     <div id="cookies" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Cookies</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Cookies</h2>
                         <p className="text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             Our Site uses cookies to improve functionality and understand how the Site is used. Cookies are small data files stored on your device. You can configure your browser to refuse cookies or notify you when cookies are being used. If cookies are disabled, parts of the Site may not function as intended.
                         </p>
                     </div>
 
                     <div id="how-we-use-information" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">How We Use Information</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">How We Use Information</h2>
                         <div className="space-y-4 text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             <p>We use collected information to:</p>
                             <ul className="list-disc pl-6 space-y-2">
@@ -173,14 +173,14 @@ const PrivacyPolicy = () => {
                     </div>
 
                     <div id="how-we-protect-information" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">How We Protect Information</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">How We Protect Information</h2>
                         <p className="text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             We use appropriate technical and organisational measures to protect personal information against unauthorised access, alteration, disclosure, or destruction. No method of transmission over the Internet or electronic storage is completely secure, and we cannot guarantee absolute security.
                         </p>
                     </div>
 
                     <div id="sharing-of-information" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Sharing of Information</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Sharing of Information</h2>
                         <div className="space-y-4 text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             <p>We do not sell or rent personal information. We may share information with trusted service providers who support our operations, such as:</p>
                             <ul className="list-disc pl-6 space-y-2">
@@ -193,7 +193,7 @@ const PrivacyPolicy = () => {
                     </div>
 
                     <div id="data-retention" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Data Retention</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Data Retention</h2>
                         <div className="space-y-4 text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             <p>We retain personal information only for as long as necessary to:</p>
                             <ul className="list-disc pl-6 space-y-2">
@@ -206,7 +206,7 @@ const PrivacyPolicy = () => {
                     </div>
 
                     <div id="your-rights" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Your Rights</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Your Rights</h2>
                         <div className="space-y-4 text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             <p>Depending on applicable data protection laws, you may have the right to:</p>
                             <ul className="list-disc pl-6 space-y-2">
@@ -221,14 +221,14 @@ const PrivacyPolicy = () => {
                     </div>
 
                     <div id="changes-to-this-policy" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Changes to This Policy</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Changes to This Policy</h2>
                         <p className="text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             We may update this Privacy Policy from time to time. The "Last updated" date will be revised when changes are made. Continued use of the Site after updates are posted constitutes acceptance of the revised policy.
                         </p>
                     </div>
 
                     <div id="contact-us" className="space-y-6 scroll-mt-28">
-                        <h2 className="font-cabinet font-bold text-[36px] md:text-[48px] tracking-[-1.5px] leading-tight">Contact Us</h2>
+                        <h2 className="font-cabinet font-bold text-[28px] md:text-[48px] tracking-tight md:tracking-[-1.5px] leading-tight">Contact Us</h2>
                         <div className="space-y-4 text-[17px] leading-relaxed text-[#111827]/80 font-inter">
                             <p>If you have any questions about this Privacy Policy or our data practices, contact us at:</p>
                             <div className="space-y-1">

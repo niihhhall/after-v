@@ -152,7 +152,7 @@ const DetailedProcess = () => {
                     </div>
 
                     {/* ── RIGHT: Timeline ─ per-step dot+connector approach ── */}
-                    <div className="flex-1 hidden lg:block">
+                    <div className="flex-1 mt-12 lg:mt-0">
                         {steps.map((step, index) => (
                             <div key={index} className="flex flex-row gap-8">
 

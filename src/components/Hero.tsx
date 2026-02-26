@@ -34,13 +34,13 @@ const Hero = () => {
                         transition={{ duration: 0.6 }}
                         className="flex flex-col items-center"
                     >
-                        <h1 className="font-cabinet font-bold text-5xl md:text-7xl tracking-tighter text-primary leading-[1.1]">
-                            <span className="font-medium opacity-80">We Turn</span>{" "}
+                        <h1 className="font-cabinet font-bold text-[40px] leading-[1.1] md:text-7xl tracking-tighter text-primary">
+                            <span className="font-medium opacity-80 block md:inline">We Turn</span>{" "}
                             <span className="uppercase text-primary">Leads</span>{" "}
                             <span className="font-medium opacity-80">Into</span>{" "}
-                            <span className="uppercase text-primary">Revenue</span>
+                            <span className="uppercase text-primary block md:inline">Revenue</span>
                             <br />
-                            <span className="font-cabinet font-normal text-4xl md:text-6xl mt-4 block">
+                            <span className="font-cabinet font-normal text-3xl md:text-6xl mt-4 block">
                                 With 24/7 AI Sales Reps
                             </span>
                         </h1>
@@ -50,7 +50,7 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="font-inter text-lg md:text-xl text-primary/70 max-w-2xl leading-relaxed"
+                        className="font-inter text-base md:text-xl text-primary/70 max-w-2xl leading-relaxed px-2 md:px-0"
                     >
                         We build <span className="font-bold text-primary">bespoke AI Sales Agents</span> to catch,
                         qualify, follow up and book your leads across{" "}
@@ -63,10 +63,10 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="flex flex-col sm:flex-row items-center gap-4"
+                        className="flex flex-col w-full sm:w-auto items-center gap-4"
                     >
-                        <Link to="/demo">
-                            <button className="bg-primary text-white font-inter font-bold px-[24px] h-[72.661px] rounded-[99.55px] flex items-center justify-center gap-[10px] hover:scale-105 transition-all text-[19.463px] group whitespace-nowrap shadow-xl">
+                        <Link to="/demo" className="w-full sm:w-auto">
+                            <button className="w-full sm:w-auto bg-primary text-white font-inter font-bold px-[24px] h-[72.661px] rounded-[99.55px] flex items-center justify-center gap-[10px] hover:scale-105 transition-all text-[18px] md:text-[19.463px] group whitespace-nowrap shadow-xl">
                                 Try a Demo Here
                                 <div className="w-[40px] h-[41px] bg-accent-green rounded-full flex items-center justify-center group-hover:bg-accent-green/90 transition-colors shrink-0">
                                     <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1">
@@ -78,20 +78,23 @@ const Hero = () => {
                     </motion.div>
 
                     {/* Dashboard Preview - exactly half crop, responsive */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 40, scale: 0.98 }}
-                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
-                        className="w-full mt-10 rounded-t-[30px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3),0_20px_40px_-15px_rgba(0,0,0,0.2)] border-2 border-b-0 border-white/50 overflow-hidden"
-                        style={{ maxHeight: '65vh' }}
-                    >
-                        <img
-                            src="/assets/dashboard.svg"
-                            alt="After5 Dashboard"
-                            className="w-full h-auto block"
-                        />
-                    </motion.div>
+                    <div className="w-full w-[calc(100%+3rem)] md:w-full -mx-6 md:mx-0 overflow-hidden px-6 md:px-0">
+                        <motion.div
+                            initial={{ opacity: 0, y: 40, scale: 0.98 }}
+                            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                            className="w-full mt-10 rounded-t-[20px] md:rounded-t-[30px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3),0_20px_40px_-15px_rgba(0,0,0,0.2)] border-2 border-b-0 border-white/50 overflow-hidden relative"
+                            style={{ maxHeight: '65vh' }}
+                        >
+                            <img
+                                src="/assets/dashboard.svg"
+                                alt="After5 Dashboard"
+                                className="w-[150%] md:w-full max-w-none md:max-w-full h-auto block object-cover md:object-contain object-left-top md:object-top"
+                                style={{ transform: 'translateX(-5%) md:translateX(0)' }}
+                            />
+                        </motion.div>
+                    </div>
                 </div>
             </div>
 
