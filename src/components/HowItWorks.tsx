@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const steps = [
     {
@@ -48,7 +49,7 @@ const HowItWorks = () => {
     const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
     return (
-        <section ref={sectionRef} id="how-it-works" className="py-32 bg-[#FAFAFA]">
+        <section ref={sectionRef} id="how-it-works" className="py-32 bg-background overflow-clip">
             <div className="max-w-[1411px] mx-auto px-6">
                 <div className="flex flex-col lg:flex-row gap-20 relative">
 
@@ -90,32 +91,34 @@ const HowItWorks = () => {
                         </h2>
 
                         {/* CTA Button */}
-                        <motion.button
-                            initial={{ opacity: 0, y: 16 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.4, duration: 0.6 }}
-                            whileHover={{
-                                scale: 1.05,
-                                backgroundColor: "#2EFFA1",
-                                boxShadow: "0 0 24px rgba(46,255,161,0.35)",
-                            }}
-                            whileTap={{ scale: 0.97 }}
-                            className="bg-white text-primary border border-black/5 font-inter font-bold px-8 py-5 rounded-[82px] transition-colors text-[15px] capitalize shadow-sm"
-                        >
-                            Book a call now
-                        </motion.button>
+                        <Link to="/contact">
+                            <motion.button
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.4, duration: 0.6 }}
+                                whileHover={{
+                                    scale: 1.05,
+                                    backgroundColor: "#2EFFA1",
+                                    boxShadow: "0 0 24px rgba(46,255,161,0.35)",
+                                }}
+                                whileTap={{ scale: 0.97 }}
+                                className="bg-white text-primary border border-black/5 font-inter font-bold px-8 py-5 rounded-[82px] transition-colors text-[15px] capitalize shadow-sm w-full md:w-auto"
+                            >
+                                Book a call now
+                            </motion.button>
+                        </Link>
                     </div>
 
                     {/* ── Right: Vertical Timeline ── */}
                     <div ref={containerRef} className="lg:w-[55%] relative pl-12 md:pl-20 pb-[20vh]">
                         {/* Static grey line */}
-                        <div className="absolute left-[24px] md:left-[40px] top-[40px] bottom-[50px] w-[2px] -translate-x-1/2 bg-black/5 z-0" />
+                        <div className="absolute left-[24px] md:left-[40px] top-[40px] bottom-[calc(20vh+60px)] w-[2px] -translate-x-1/2 bg-black/5 z-0" />
 
                         {/* Scroll-driven green fill */}
                         <motion.div
                             style={{ scaleY, originY: 0 }}
-                            className="absolute left-[24px] md:left-[40px] top-[40px] bottom-[50px] w-[2px] -translate-x-1/2 bg-accent-green z-10 shadow-[0_0_15px_rgba(46,255,161,0.5)]"
+                            className="absolute left-[24px] md:left-[40px] top-[40px] bottom-[calc(20vh+60px)] w-[2px] -translate-x-1/2 bg-accent-green z-10 shadow-[0_0_15px_rgba(46,255,161,0.5)]"
                         />
 
                         <div className="space-y-[48px]">
@@ -167,7 +170,7 @@ const HowItWorks = () => {
 
                                     {/* Step Card */}
                                     <motion.div
-                                        whileInView={{ 
+                                        whileInView={{
                                             scale: 1.02,
                                             borderColor: "rgba(46, 255, 161, 0.3)",
                                             boxShadow: "0 20px 48px rgba(0,0,0,0.06)"

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const SecondaryCTA = () => {
     return (
@@ -50,23 +51,27 @@ const SecondaryCTA = () => {
                         transition={{ duration: 0.5, delay: 0.4 }}
                         className="flex flex-col sm:flex-row gap-4 items-start sm:items-center"
                     >
-                        <motion.button
-                            whileHover={{ scale: 1.02, backgroundColor: "#3f4c44" }}
-                            whileTap={{ scale: 0.98 }}
-                            className="bg-[#2f3b34] text-white px-6 py-3.5 rounded-full font-semibold text-sm transition-colors duration-200 border border-white/5 shadow-sm"
-                        >
-                            Book a Call with Louis here
-                        </motion.button>
-                        <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="bg-white text-[#051109] px-6 py-3.5 rounded-full font-semibold text-sm group flex items-center justify-center transition-all duration-200 shadow-md hover:shadow-lg"
-                        >
-                            Test It Out First
-                            <div className="ml-3 bg-[#1e7a4b] p-1 rounded-full group-hover:bg-[#155a36] transition-colors">
-                                <ArrowRight size={14} className="text-white stroke-3 group-hover:translate-x-0.5 transition-transform" />
-                            </div>
-                        </motion.button>
+                        <Link to="/contact">
+                            <motion.button
+                                whileHover={{ scale: 1.02, backgroundColor: "#3f4c44" }}
+                                whileTap={{ scale: 0.98 }}
+                                className="bg-[#2f3b34] text-white px-6 py-3.5 rounded-full font-semibold text-sm transition-colors duration-200 border border-white/5 shadow-sm"
+                            >
+                                Book a call with Louis here
+                            </motion.button>
+                        </Link>
+                        <Link to="/demo">
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="bg-white text-[#051109] px-6 py-3.5 rounded-full font-semibold text-sm group flex items-center justify-center transition-all duration-200 shadow-md hover:shadow-lg"
+                            >
+                                Test It Out First
+                                <div className="ml-3 bg-[#1e7a4b] p-1 rounded-full group-hover:bg-[#155a36] transition-colors">
+                                    <ArrowRight size={14} className="text-white stroke-3 group-hover:translate-x-0.5 transition-transform" />
+                                </div>
+                            </motion.button>
+                        </Link>
                     </motion.div>
                 </div>
 

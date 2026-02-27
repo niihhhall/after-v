@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const CTA = () => {
     return (
-        <div id="cta" className="bg-[#EFEFEF] px-4 py-[85px]">
-            <section className="bg-primary relative overflow-hidden rounded-[40px] max-w-[1411px] mx-auto shadow-2xl">
+        <div id="cta" className="w-full bg-background px-4 py-20 lg:p-24">
+            <section className="bg-primary relative overflow-hidden rounded-[30px] lg:rounded-[48px] max-w-[1411px] mx-auto shadow-[0_40px_100px_-20px_rgba(0,0,0,0.25)]">
 
                 {/* Background Grid Pattern - More visible as per screenshot */}
                 <div className="absolute inset-0 z-0 opacity-[0.08] pointer-events-none"

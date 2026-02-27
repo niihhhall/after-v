@@ -3,7 +3,7 @@ import { Instagram, Facebook, Linkedin } from 'lucide-react';
 
 const Footer = () => {
     return (
-        <footer id="footer" className="bg-[#EFEFEF] px-4 pt-4 pb-4">
+        <footer id="footer" className="bg-background px-4 pt-4 pb-4">
             <div className="bg-[#0A0A0A] text-white rounded-[20px] overflow-hidden">
 
                 <div className="max-w-[1411px] mx-auto px-10 py-20">

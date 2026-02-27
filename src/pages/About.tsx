@@ -134,7 +134,7 @@ const About = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="bg-accent-green/10 border border-accent-green/20 text-accent-green px-4 py-1.5 rounded-full text-[14px] font-medium mb-8"
+                            className="bg-[#e5fcf1] border border-[#d1fae5] text-[#0f172a] px-4 py-1.5 rounded-full text-[14px] font-medium mb-8"
                         >
                             An AI Sales Partner
                         </motion.div>

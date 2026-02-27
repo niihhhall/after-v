@@ -19,15 +19,28 @@ import Demo from "./pages/Demo";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import ScrollToTop from "./components/ScrollToTop";
+import { usePageMeta } from "./hooks/usePageMeta";
 
 const Home = () => {
+  usePageMeta({
+    title: "AI Sales Agents for 24/7 Lead Conversion",
+    description:
+      "After5 builds bespoke AI sales agents to catch, qualify, and follow up with your leads across WhatsApp, email, and SMS, 24/7.",
+  });
+
   return (
     <>
       <Hero />
       <Problem />
       <Solution />
-      <SpeedToLead />
-      <MobileFrame />
+
+      <div className="w-full bg-[#FAFAFA] px-4 py-20 lg:p-24">
+        <div className="bg-primary relative overflow-hidden rounded-[30px] lg:rounded-[48px] max-w-[1411px] mx-auto shadow-[0_40px_100px_-20px_rgba(0,0,0,0.25)]">
+          <SpeedToLead />
+          <MobileFrame />
+        </div>
+      </div>
+
       <HowItWorks />
       <LowerSection />
       <GapHighlight />
@@ -36,7 +49,7 @@ const Home = () => {
       <CTA />
     </>
   );
-}
+};
 
 function App() {
   return (
