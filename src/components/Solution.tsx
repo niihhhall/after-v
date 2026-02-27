@@ -25,7 +25,7 @@ const FlipCard = ({ card, index }: { card: any, index: number }) => {
                 style={{ willChange: "transform" }}
             >
                 {/* Front Side */}
-                <div className={`absolute inset-0 h-full w-full rounded-[20px] p-[36px] [backface-visibility:hidden] flex flex-col items-center justify-center text-center space-y-6 ${card.variant === 'highlight' ? 'bg-[#f0f9f6]' : 'bg-white border border-black/5'}`}>
+                <div className={`absolute inset-0 h-full w-full rounded-[20px] p-[36px] [backface-visibility:hidden] flex flex-col items-center justify-center text-center space-y-6 ${card.variant === 'highlight' ? 'bg-[#f0f9f6]' : 'bg-background border border-black/5'}`}>
                     <div className="relative group/icon">
                         {/* Glow Effect */}
                         <div className={`absolute inset-0 bg-accent-green/20 blur-[30px] rounded-full scale-125 transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-50'}`} />

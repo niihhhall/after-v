@@ -3,49 +3,40 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="relative pt-32 pb-0 overflow-hidden bg-[#FAFAFA]">
-      {/* Background geometric shapes (hero-bg.png) */}
+    <section className="relative pt-44 lg:pt-56 pb-0 overflow-hidden bg-background">
+      {/* Background grid using SVG pattern for clean, non-overlapping lines */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none opacity-[0.12] mix-blend-multiply"
+        className="absolute inset-x-0 top-0 h-[1000px] z-0 pointer-events-none opacity-[0.1]"
         style={{
-          backgroundImage: "url(/assets/hero-bg.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "top center",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
-
-      {/* Background grid */}
-      <div
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{
-          backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px)`,
-          backgroundSize: "90px 90px",
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Crect width='90' height='90' fill='rgba(0,0,0,0.05)'/%3E%3Crect x='90' y='90' width='90' height='90' fill='rgba(0,0,0,0.05)'/%3E%3Cpath d='M90 0v180M0 90h180' stroke='rgba(0,0,0,0.2)' stroke-width='1'/%3E%3C/svg%3E")`,
+          backgroundSize: '180px 180px',
+          maskImage: 'radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 60% 50% at 50% 0%, #000 70% , transparent 100%)',
         }}
       />
 
       {/* Soft white radial center glow to highlight the text */}
-      <div className="absolute top-[80px] left-1/2 -translate-x-1/2 w-[1100px] h-[600px] bg-white/90 blur-[130px] opacity-90 pointer-events-none z-0" />
+      <div className="absolute top-[80px] left-1/2 -translate-x-1/2 w-[1100px] h-[600px] bg-white/80 blur-[130px] opacity-80 pointer-events-none z-0" />
 
       <div className="max-w-[1411px] mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center text-center gap-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
             className="flex flex-col items-center"
           >
-            <h1 className="font-cabinet font-bold text-[38px] min-[400px]:text-[42px] leading-[1.1] md:text-7xl tracking-tighter text-primary drop-shadow-[0_2px_10px_rgba(0,0,0,0.05)] md:drop-shadow-none">
+            <h1 className="font-cabinet font-bold text-[44px] min-[400px]:text-[52px] leading-none md:text-8xl tracking-tighter text-primary drop-shadow-[0_2px_10px_rgba(0,0,0,0.05)] md:drop-shadow-none">
               <span className="block md:inline">
                 <span className="font-medium opacity-80">We Turn</span>{" "}
                 <span className="uppercase text-primary font-bold">LEADS</span>{" "}
                 <span className="font-medium opacity-80">Into</span>
               </span>
               <span className="hidden md:inline"> </span>
-              <span className="uppercase text-primary block md:inline text-[48px] min-[400px]:text-[54px] md:text-7xl mt-1 md:mt-0 tracking-[-1px] md:tracking-tighter">
+              <span className="uppercase text-primary block md:inline text-[52px] min-[400px]:text-[64px] md:text-8xl mt-1 md:mt-2 tracking-[-1px] md:tracking-tighter">
                 REVENUE
               </span>
-              <span className="font-cabinet font-normal text-[26px] min-[400px]:text-[28px] md:text-6xl mt-3 md:mt-4 block tracking-normal drop-shadow-none">
+              <span className="font-cabinet font-normal text-[28px] min-[400px]:text-[32px] md:text-7xl mt-4 md:mt-6 block tracking-normal drop-shadow-none">
                 With 24/7 AI Sales Reps
               </span>
             </h1>
@@ -98,8 +89,7 @@ const Hero = () => {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.3, ease: [0.23, 1, 0.32, 1] }}
-              className="w-full mt-10 rounded-t-[16px] md:rounded-t-[30px] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] border border-b-0 border-black/10 overflow-hidden relative"
-              style={{ maxHeight: "65vh" }}
+              className="w-full mt-10 rounded-t-[16px] md:rounded-t-[30px] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.2)] border border-b-0 border-black/10 overflow-hidden relative max-h-[300px] sm:max-h-[380px] md:max-h-[600px]"
             >
               <img
                 src="/assets/dashboard.svg"

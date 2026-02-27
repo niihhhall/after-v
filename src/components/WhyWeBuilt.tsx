@@ -2,13 +2,13 @@ import { motion } from 'framer-motion';
 
 const WhyWeBuilt = () => {
     return (
-        <section className="pt-24 max-w-[1411px] mx-auto px-6 lg:px-20 bg-background text-primary">
+        <section className="pt-24 max-w-[1411px] mx-auto px-6 lg:px-20 bg-background text-primary overflow-clip">
             <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start w-full mb-12"
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6 }}
+                className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start w-full mb-12 will-change-transform"
             >
                 {/* Left Side: Heading */}
                 <div className="flex flex-col items-start gap-8 sticky top-32">

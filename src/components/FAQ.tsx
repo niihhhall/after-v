@@ -77,7 +77,7 @@ const FAQItem = ({ question, answer, delay }: { question: string; answer: string
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay }}
-            className={`border border-gray-100 rounded-[32px] overflow-hidden transition-all ${isOpen ? 'bg-white shadow-xl shadow-primary/5' : 'bg-white/50 hover:bg-white'}`}
+            className={`border border-gray-100 rounded-[32px] overflow-hidden transition-all ${isOpen ? 'bg-background shadow-xl shadow-primary/5' : 'bg-background/50 hover:bg-background'}`}
         >
             <button
                 onClick={() => setIsOpen(!isOpen)}

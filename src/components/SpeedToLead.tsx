@@ -34,7 +34,7 @@ const SpeedToLead = () => {
     ];
 
     return (
-        <section id="speed-to-lead" className="py-32 bg-primary overflow-hidden relative">
+        <section id="speed-to-lead" className="py-32 overflow-hidden relative">
             {/* Background Grid Pattern */}
             <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
                 style={{
@@ -70,16 +70,16 @@ const SpeedToLead = () => {
                 <div className="flex flex-col lg:flex-row gap-[21px] h-auto lg:h-[477px] w-full">
                     {stats.map((stat, i) => {
                         const isHovered = hoveredIndex === i;
-                        
+
                         return (
                             <motion.div
                                 key={i}
                                 onMouseEnter={() => setHoveredIndex(i)}
-                                animate={{ 
+                                animate={{
                                     flex: isHovered ? 1.5 : 0.8,
                                     backgroundColor: isHovered ? "#2EFFA1" : "rgba(255, 255, 255, 0.03)"
                                 }}
-                                transition={{ 
+                                transition={{
                                     flex: { duration: 0.6, ease: [0.23, 1, 0.32, 1] },
                                     backgroundColor: { duration: 0.4 }
                                 }}
@@ -92,7 +92,7 @@ const SpeedToLead = () => {
                                 {/* Grid for expanded card */}
                                 <AnimatePresence>
                                     {isHovered && (
-                                        <motion.div 
+                                        <motion.div
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 0.15 }}
                                             exit={{ opacity: 0 }}
@@ -113,7 +113,7 @@ const SpeedToLead = () => {
                                         <stat.icon size={32} strokeWidth={1.5} />
                                     </div>
 
-                                    <motion.span 
+                                    <motion.span
                                         animate={{ fontSize: isHovered ? "118px" : "64px" }}
                                         transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
                                         className="block font-cabinet font-bold leading-none tracking-tighter transition-colors duration-500"
@@ -122,8 +122,8 @@ const SpeedToLead = () => {
                                     </motion.span>
                                 </div>
 
-                                <motion.p 
-                                    animate={{ 
+                                <motion.p
+                                    animate={{
                                         fontSize: isHovered ? "24px" : "17px",
                                         opacity: isHovered ? 1 : 0.8
                                     }}

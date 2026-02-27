@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const MultiChannel = () => {
     return (
-        <section id="multi-channel" className="pt-24 pb-12 bg-primary overflow-hidden">
+        <section id="multi-channel" className="pt-24 pb-12 overflow-hidden">
             <div className="max-w-[1411px] mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}

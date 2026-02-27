@@ -73,7 +73,7 @@ const WhatWeDo = () => {
                         {/* Conversation Flow Chart Card */}
                         <motion.div
                             whileHover={{ scale: 1.01 }}
-                            className="w-full bg-white rounded-[6px] p-7 md:p-9 shadow-[0_25px_50px_rgba(0,0,0,0.08)] relative"
+                            className="w-full bg-background rounded-[6px] p-7 md:p-9 shadow-[0_25px_50px_rgba(0,0,0,0.08)] relative border border-black/5"
                         >
                             <div className="flex justify-between items-center mb-8">
                                 <h3 className="font-inter font-bold text-[20px] text-[#111] tracking-[-0.4px]">Conversation Flow</h3>
@@ -141,7 +141,7 @@ const WhatWeDo = () => {
                     className="flex flex-col gap-6 w-full lg:w-1/2 lg:max-w-[540px]"
                 >
                     {/* Card 1 */}
-                    <div className="bg-white rounded-[20px] p-10 flex flex-col gap-10 shadow-[0_8px_40px_rgba(0,0,0,0.03)] border border-black/5">
+                    <div className="bg-background rounded-[20px] p-10 flex flex-col gap-10 shadow-[0_8px_40px_rgba(0,0,0,0.03)] border border-black/5">
                         <CustomIcon />
                         <p className="font-inter text-[18px] md:text-[20px] text-primary tracking-[-0.2px]">
                             We <span className="font-extrabold text-primary">Do NOT</span> generate leads.
@@ -149,7 +149,7 @@ const WhatWeDo = () => {
                     </div>
 
                     {/* Card 2 */}
-                    <div className="bg-white rounded-[20px] p-10 flex flex-col gap-10 shadow-[0_8px_40px_rgba(0,0,0,0.03)] border border-black/5">
+                    <div className="bg-background rounded-[20px] p-10 flex flex-col gap-10 shadow-[0_8px_40px_rgba(0,0,0,0.03)] border border-black/5">
                         <CustomIcon />
                         <p className="font-inter text-[18px] md:text-[20px] text-primary tracking-[-0.2px]">
                             We <span className="font-extrabold text-primary">DO NOT</span> replace sales teams.

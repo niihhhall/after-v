@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const MobileFrame = () => {
     return (
-        <section id="mobile-frame" className="pt-12 pb-24 bg-primary overflow-hidden flex flex-col items-center">
+        <section id="mobile-frame" className="pt-12 pb-24 overflow-hidden flex flex-col items-center">
             <div className="max-w-[1411px] mx-auto px-6 w-full">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}

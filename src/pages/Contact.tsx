@@ -85,8 +85,8 @@ const Contact = () => {
                 >
 
                     {/* LEFT — CTA content */}
-                    <div className="lg:w-[42%] shrink-0 p-12 lg:p-16 flex flex-col border-b lg:border-b-0 lg:border-r border-black/[0.06] relative">
-                        <div className="lg:sticky lg:top-32 flex flex-col justify-between h-full min-h-[400px] lg:min-h-[500px]">
+                    <div className="lg:w-[42%] shrink-0 border-b lg:border-b-0 lg:border-r border-black/[0.06] relative">
+                        <div className="p-12 lg:p-16 flex flex-col justify-between lg:sticky lg:top-32 min-h-[400px] lg:min-h-[500px]">
                             {/* Top: heading + subtext */}
                             <div className="space-y-5">
                                 <motion.h2
@@ -159,10 +159,10 @@ const Contact = () => {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: 0.4 }}
-                        className="flex-1 flex flex-col pt-10 px-4 md:px-8 pb-10 bg-white"
+                        className="flex-1 flex flex-col pt-0 px-4 md:px-8 pb-10 bg-white"
                     >
                         {/* Tabs Header */}
-                        <div className="flex items-center gap-8 mb-12 border-b border-[#f1f5f9] px-4 md:px-0">
+                        <div className="flex items-center gap-8 mb-4 mt-8 border-b border-[#f1f5f9] px-4 md:px-0">
                             <div className="pb-4 relative">
                                 <button
                                     onClick={() => setActiveTab('call')}
@@ -203,26 +203,20 @@ const Contact = () => {
                                     exit={{ opacity: 0, x: -20 }}
                                     transition={{ duration: 0.4 }}
                                 >
-                                    {/* Scale the widget down; clip scrollbar with overflow: hidden */}
-                                    <div className="relative" style={{ height: `${700 * 0.68}px`, overflow: 'hidden', marginRight: '-1px' }}>
+                                    {/* Removed custom scaling to allow widget to fill width naturally */}
+                                    <div className="relative w-full overflow-hidden" style={{ height: '1100px' }}>
                                         {isCalendlyLoading && (
                                             <div className="absolute inset-0 bg-white z-20 flex flex-col items-center justify-center gap-6">
                                                 <div className="w-12 h-12 border-2 border-[#f1f5f9] border-t-[#2EFFA1] rounded-full animate-spin" />
-                                                <div className="w-full max-w-[400px] h-[400px] bg-[#f8fafc] rounded-[12px] animate-pulse overflow-hidden relative">
+                                                <div className="w-full h-full bg-[#f8fafc] rounded-[12px] animate-pulse overflow-hidden relative">
                                                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg] animate-shimmer" />
                                                 </div>
                                             </div>
                                         )}
                                         <div
-                                            className="calendly-inline-widget"
+                                            className="calendly-inline-widget w-full h-full"
                                             data-url="https://calendly.com/after5/ai-sales-agent-discovery-call?primary_color=2fffa1&hide_landing_page_details=1&hide_gdpr_banner=1"
-                                            style={{
-                                                minWidth: '320px',
-                                                height: '700px',
-                                                width: `${Math.ceil(100 / 0.68) + 2}%`,
-                                                transform: 'scale(0.68)',
-                                                transformOrigin: 'top left',
-                                            }}
+                                            style={{ minWidth: '320px', height: '100%' }}
                                         />
                                     </div>
                                 </motion.div>

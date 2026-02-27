@@ -31,9 +31,9 @@ const CoreValues = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="bg-[rgba(46,255,161,0.11)] px-[11px] py-[9px] rounded-[100px] border border-accent-green/20"
+                    className="bg-[#e5fcf1] px-[11px] py-[9px] rounded-[100px] border border-[#d1fae5]"
                 >
-                    <span className="font-inter font-medium text-primary text-[16px] tracking-[-0.4px]">
+                    <span className="font-inter font-medium text-[#0f172a] text-[16px] tracking-[-0.4px]">
                         What We Stand For
                     </span>
                 </motion.div>
