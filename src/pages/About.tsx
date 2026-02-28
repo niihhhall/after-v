@@ -5,8 +5,14 @@ import CoreValues from '../components/CoreValues';
 import WhyWeBuilt from '../components/WhyWeBuilt';
 import WhatWeDo from '../components/WhatWeDo';
 import SecondaryCTA from '../components/SecondaryCTA';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const About = () => {
+    usePageMeta({
+        title: "After5 Digital - About Us",
+        description: "Learn about After5 Digital and our mission to revolutionize sales with AI agents."
+    });
+
     return (
         <div className="bg-[#efefef]">
             <AboutHero />

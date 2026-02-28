@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import DetailedProcess from '../components/DetailedProcess';
 import { Rocket } from 'lucide-react';
 import PageHero from '../components/PageHero';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const HowWeWorkAudit = () => {
     return (
@@ -141,6 +142,10 @@ const WhereAfter5Fits = () => {
 };
 
 const HowWeWork = () => {
+    usePageMeta({
+        title: "After5 Digital - How We Work",
+        description: "Discover After5 Digital's process for building and deploying AI sales agents."
+    });
     return (
         <div className="bg-[#efefef]">
             <PageHero title="How We" accent="Work" />

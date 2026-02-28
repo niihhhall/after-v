@@ -1,9 +1,15 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import PageHero from '../components/PageHero';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 
 const Contact = () => {
+    usePageMeta({
+        title: "After5 Digital - Contact Us",
+        description: "Get in touch with After5 Digital to learn more about our AI sales agents."
+    });
+
     const [activeTab, setActiveTab] = useState<'call' | 'message'>('call');
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [enquiryType, setEnquiryType] = useState('');

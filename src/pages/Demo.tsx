@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 const DemoForm = () => {
     const [formSubmitted, setFormSubmitted] = useState(false);
@@ -181,6 +182,10 @@ const DemoForm = () => {
 };
 
 const Demo = () => {
+    usePageMeta({
+        title: "After5 Digital - Try the Demo",
+        description: "Experience After5 Digital's AI sales agents in action with our interactive demo."
+    });
     return (
         <div className="bg-[#efefef]">
             <PageHero title="Ready To Try The" accent="Demo?" />
