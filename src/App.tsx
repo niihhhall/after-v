@@ -23,7 +23,7 @@ import { usePageMeta } from "./hooks/usePageMeta";
 
 const Home = () => {
   usePageMeta({
-    title: "AI Sales Agents for 24/7 Lead Conversion",
+    title: "After5 Digital - AI Sales Agents for 24/7 Lead Conversion",
     description:
       "After5 builds bespoke AI sales agents to catch, qualify, and follow up with your leads across WhatsApp, email, and SMS, 24/7.",
   });
