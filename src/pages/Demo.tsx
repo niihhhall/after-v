@@ -95,34 +95,42 @@ const DemoForm = () => {
                                             { label: 'COMPANY NAME', placeholder: '' },
                                             { label: 'INDUSTRY', placeholder: '' },
                                         ].map((field, i) => (
-                                            <div key={i} className="space-y-2">
-                                                <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest">{field.label}</label>
-                                                <input type="text" className="w-full bg-transparent border-b border-[#cbd5e1] py-2 font-cabinet font-bold text-[17px] focus:outline-none focus:border-[#2EFFA1] transition-colors" />
+                                            <div key={i} className="space-y-3">
+                                                <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest ml-1">{field.label}</label>
+                                                <input
+                                                    type="text"
+                                                    placeholder={field.placeholder}
+                                                    className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-[16px] px-6 py-4 font-cabinet font-bold text-[17px] focus:outline-none focus:border-[#2EFFA1] focus:ring-4 focus:ring-[#2EFFA1]/10 transition-all placeholder:text-[#94a3b8]"
+                                                />
                                             </div>
                                         ))}
                                     </div>
 
-                                    <div className="space-y-2">
-                                        <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest">WHERE DO MOST OF YOUR ENQUIRIES COME FROM?</label>
+                                    <div className="space-y-3">
+                                        <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest ml-1">WHERE DO MOST OF YOUR ENQUIRIES COME FROM?</label>
                                         <div className="relative">
-                                            <select className="w-full bg-transparent border-b border-[#cbd5e1] py-2 font-cabinet font-bold text-[17px] focus:outline-none focus:border-[#2EFFA1] appearance-none cursor-pointer">
-                                                <option value=""></option>
+                                            <select className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-[16px] px-6 py-4 font-cabinet font-bold text-[17px] focus:outline-none focus:border-[#2EFFA1] focus:ring-4 focus:ring-[#2EFFA1]/10 appearance-none cursor-pointer transition-all">
+                                                <option value="" disabled selected hidden>Select an option</option>
                                                 <option value="google">Google</option>
                                                 <option value="meta">Meta (FB/IG)</option>
                                                 <option value="referral">Referral</option>
                                                 <option value="other">Other</option>
                                             </select>
-                                            <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
-                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                            <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none">
+                                                <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
                                                     <path d="M2.5 4.5L6 8L9.5 4.5" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                                 </svg>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="space-y-2">
-                                        <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest">MESSAGE</label>
-                                        <textarea rows={1} className="w-full bg-transparent border-b border-[#cbd5e1] py-2 font-cabinet font-bold text-[17px] focus:outline-none focus:border-[#2EFFA1] resize-none" />
+                                    <div className="space-y-3">
+                                        <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest ml-1">MESSAGE</label>
+                                        <textarea
+                                            rows={4}
+                                            placeholder="How can we help you?"
+                                            className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-[16px] px-6 py-4 font-cabinet font-bold text-[17px] focus:outline-none focus:border-[#2EFFA1] focus:ring-4 focus:ring-[#2EFFA1]/10 resize-none transition-all placeholder:text-[#94a3b8]"
+                                        />
                                     </div>
 
                                     <div className="flex items-start gap-4 pt-4">

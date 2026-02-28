@@ -363,27 +363,31 @@ const Contact = () => {
                                                             hidden: { opacity: 0, y: 10 },
                                                             visible: { opacity: 1, y: 0 }
                                                         }}
-                                                        className="relative group shadow-[inset_0_-1px_0_0_#e2e8f0] focus-within:shadow-[inset_0_-2px_0_0_#2EFFA1] transition-all duration-300"
+                                                        className="space-y-3"
                                                     >
-                                                        <label className="block text-[11px] font-cabinet font-bold text-[#94a3b8] uppercase tracking-widest mb-1">{field.label}</label>
+                                                        <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest ml-1">{field.label}</label>
                                                         {field.type === 'select' ? (
                                                             <div className="relative">
                                                                 <select
                                                                     value={enquiryType}
                                                                     onChange={(e) => setEnquiryType(e.target.value)}
-                                                                    className="w-full bg-transparent py-2 text-[#0f172a] font-cabinet font-bold text-[17px] focus:outline-none appearance-none cursor-pointer"
+                                                                    className="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-[16px] px-6 py-4 text-[#0f172a] font-cabinet font-bold text-[17px] focus:outline-none focus:border-[#2EFFA1] focus:ring-4 focus:ring-[#2EFFA1]/10 appearance-none cursor-pointer transition-all"
                                                                 >
-                                                                    <option value="">Select an option</option>
+                                                                    <option value="" disabled selected hidden>Select an option</option>
                                                                     {field.options?.map(opt => <option key={opt} value={opt.toLowerCase()}>{opt}</option>)}
                                                                 </select>
-                                                                <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none group-hover:translate-y-[-40%] transition-transform">
-                                                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                                                <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none transition-transform">
+                                                                    <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
                                                                         <path d="M2.5 4.5L6 8L9.5 4.5" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                                                     </svg>
                                                                 </div>
                                                             </div>
                                                         ) : (
-                                                            <input type={field.type} placeholder={field.placeholder} className="w-full bg-transparent py-2 text-[#0f172a] font-cabinet font-bold text-[17px] placeholder:text-[#cbd5e1] focus:outline-none transition-all" />
+                                                            <input
+                                                                type={field.type}
+                                                                placeholder={field.placeholder}
+                                                                className="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-[16px] px-6 py-4 text-[#0f172a] font-cabinet font-bold text-[17px] placeholder:text-[#cbd5e1] focus:outline-none focus:border-[#2EFFA1] focus:ring-4 focus:ring-[#2EFFA1]/10 transition-all"
+                                                            />
                                                         )}
                                                     </motion.div>
                                                 ))}
@@ -402,10 +406,14 @@ const Contact = () => {
                                                             hidden: { opacity: 0, y: 10 },
                                                             visible: { opacity: 1, y: 0 }
                                                         }}
-                                                        className="relative group shadow-[inset_0_-1px_0_0_#e2e8f0] focus-within:shadow-[inset_0_-2px_0_0_#2EFFA1] transition-all duration-300"
+                                                        className="space-y-3"
                                                     >
-                                                        <label className="block text-[11px] font-cabinet font-bold text-[#94a3b8] uppercase tracking-widest mb-1">{field.label}</label>
-                                                        <input type={field.type} placeholder={field.placeholder} className="w-full bg-transparent py-2 text-[#0f172a] font-cabinet font-bold text-[17px] placeholder:text-[#cbd5e1] focus:outline-none transition-all" />
+                                                        <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest ml-1">{field.label}</label>
+                                                        <input
+                                                            type={field.type}
+                                                            placeholder={field.placeholder}
+                                                            className="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-[16px] px-6 py-4 text-[#0f172a] font-cabinet font-bold text-[17px] placeholder:text-[#cbd5e1] focus:outline-none focus:border-[#2EFFA1] focus:ring-4 focus:ring-[#2EFFA1]/10 transition-all"
+                                                        />
                                                     </motion.div>
                                                 ))}
                                             </div>
@@ -416,10 +424,14 @@ const Contact = () => {
                                                 hidden: { opacity: 0, y: 10 },
                                                 visible: { opacity: 1, y: 0 }
                                             }}
-                                            className="relative group shadow-[inset_0_-1px_0_0_#e2e8f0] focus-within:shadow-[inset_0_-2px_0_0_#2EFFA1] transition-all duration-300"
+                                            className="space-y-3"
                                         >
-                                            <label className="block text-[11px] font-cabinet font-bold text-[#94a3b8] uppercase tracking-widest mb-1">Message</label>
-                                            <textarea rows={1} placeholder="Tell us more about your needs..." className="w-full bg-transparent py-2 text-[#0f172a] font-cabinet font-bold text-[17px] placeholder:text-[#cbd5e1] focus:outline-none resize-none overflow-hidden min-h-[44px]" />
+                                            <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest ml-1">Message</label>
+                                            <textarea
+                                                rows={4}
+                                                placeholder="Tell us more about your needs..."
+                                                className="w-full bg-[#f8fafc] border border-[#e2e8f0] rounded-[16px] px-6 py-4 text-[#0f172a] font-cabinet font-bold text-[17px] placeholder:text-[#cbd5e1] focus:outline-none focus:border-[#2EFFA1] focus:ring-4 focus:ring-[#2EFFA1]/10 resize-none transition-all min-h-[120px]"
+                                            />
                                         </motion.div>
 
                                         <motion.div
