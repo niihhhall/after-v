@@ -6,14 +6,16 @@ const Hero = () => {
   const glowRef = useGlowTrigger("hero");
   return (
     <section className="relative pt-44 lg:pt-56 pb-0 overflow-hidden bg-background">
-      {/* Background grid using SVG pattern for clean, non-overlapping lines */}
+      {/* Background grid using the provided SVG design image */}
       <div
-        className="absolute inset-x-0 top-0 h-[1000px] z-0 pointer-events-none opacity-[0.1]"
+        className="absolute inset-x-0 top-0 h-[1000px] z-0 pointer-events-none opacity-[0.03]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Crect width='90' height='90' fill='rgba(0,0,0,0.05)'/%3E%3Crect x='90' y='90' width='90' height='90' fill='rgba(0,0,0,0.05)'/%3E%3Cpath d='M90 0v180M0 90h180' stroke='rgba(0,0,0,0.2)' stroke-width='1'/%3E%3C/svg%3E")`,
-          backgroundSize: '180px 180px',
-          maskImage: 'radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%)',
-          WebkitMaskImage: 'radial-gradient(ellipse 60% 50% at 50% 0%, #000 70% , transparent 100%)',
+          backgroundImage: `url("/assets/Group.svg")`,
+          backgroundSize: '100% auto',
+          backgroundPosition: 'top center',
+          backgroundRepeat: 'no-repeat',
+          maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
         }}
       />
 
