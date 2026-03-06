@@ -7,54 +7,6 @@ import { useGlowTrigger } from '../hooks/useGlowTrigger';
 
 const DemoForm = () => {
     const [formSubmitted, setFormSubmitted] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isAgreed, setIsAgreed] = useState(false);
-    const [errorMsg, setErrorMsg] = useState('');
-
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setErrorMsg('');
-        setIsSubmitting(true);
-
-        const formData = new FormData(e.currentTarget);
-        const firstName = formData.get('firstName') as string;
-        const lastName = formData.get('lastName') as string;
-        const name = `${firstName} ${lastName}`.trim();
-        const email = formData.get('email') as string;
-        const phone = formData.get('phone') as string;
-        const company = formData.get('company') as string;
-        const industry = formData.get('industry') as string;
-        const origin = formData.get('origin') as string;
-        const message = formData.get('message') as string;
-
-        try {
-            const response = await fetch('/api/demo-request', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name,
-                    email,
-                    phone,
-                    company,
-                    message: `Industry: ${industry}\n\nMessage:\n${message}`,
-                    origin,
-                }),
-            });
-
-            if (!response.ok) {
-                const data = await response.json();
-                throw new Error(data.error || 'Something went wrong');
-            }
-
-            setFormSubmitted(true);
-        } catch (error: any) {
-            setErrorMsg(error.message || 'Failed to submit form. Please try again.');
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
 
     return (
         <section id="registration-form" className="bg-[#efefef] py-24 md:py-32 px-6 lg:px-20 font-inter">
@@ -109,10 +61,7 @@ const DemoForm = () => {
                                         </motion.button>
                                     </Link>
                                     <motion.button
-                                        onClick={() => {
-                                            setFormSubmitted(false);
-                                            setIsAgreed(false);
-                                        }}
+                                        onClick={() => setFormSubmitted(false)}
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                         className="px-8 py-4 bg-white text-[#0f172a] border border-[#cbd5e1] rounded-full font-cabinet font-bold text-[16px] transition-all hover:border-[#0f172a] shadow-sm"
@@ -133,23 +82,24 @@ const DemoForm = () => {
 
                                 <form
                                     className="space-y-8"
-                                    onSubmit={handleSubmit}
+                                    onSubmit={(e) => {
+                                        e.preventDefault();
+                                        setFormSubmitted(true);
+                                    }}
                                 >
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                                         {[
-                                            { label: 'FIRST NAME', name: 'firstName', placeholder: '' },
-                                            { label: 'LAST NAME', name: 'lastName', placeholder: '' },
-                                            { label: 'EMAIL ADDRESS', name: 'email', type: 'email', placeholder: '' },
-                                            { label: 'MOBILE NUMBER (WHATSAPP)', name: 'phone', type: 'tel', placeholder: '' },
-                                            { label: 'COMPANY NAME', name: 'company', placeholder: '' },
-                                            { label: 'INDUSTRY', name: 'industry', placeholder: '' },
+                                            { label: 'FIRST NAME', placeholder: '' },
+                                            { label: 'LAST NAME', placeholder: '' },
+                                            { label: 'EMAIL ADDRESS', placeholder: '' },
+                                            { label: 'MOBILE NUMBER (WHATSAPP)', placeholder: '' },
+                                            { label: 'COMPANY NAME', placeholder: '' },
+                                            { label: 'INDUSTRY', placeholder: '' },
                                         ].map((field, i) => (
                                             <div key={i} className="space-y-3">
                                                 <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest ml-1">{field.label}</label>
                                                 <input
-                                                    type={field.type || "text"}
-                                                    name={field.name}
-                                                    required
+                                                    type="text"
                                                     placeholder={field.placeholder}
                                                     className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-[16px] px-6 py-4 font-cabinet font-bold text-[17px] focus:outline-none focus:border-[#2EFFA1] focus:ring-4 focus:ring-[#2EFFA1]/10 transition-all placeholder:text-[#94a3b8]"
                                                 />
@@ -160,8 +110,8 @@ const DemoForm = () => {
                                     <div className="space-y-3">
                                         <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest ml-1">WHERE DO MOST OF YOUR ENQUIRIES COME FROM?</label>
                                         <div className="relative">
-                                            <select name="origin" required defaultValue="" className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-[16px] px-6 py-4 font-cabinet font-bold text-[17px] focus:outline-none focus:border-[#2EFFA1] focus:ring-4 focus:ring-[#2EFFA1]/10 appearance-none cursor-pointer transition-all">
-                                                <option value="" disabled hidden>Select an option</option>
+                                            <select className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-[16px] px-6 py-4 font-cabinet font-bold text-[17px] focus:outline-none focus:border-[#2EFFA1] focus:ring-4 focus:ring-[#2EFFA1]/10 appearance-none cursor-pointer transition-all">
+                                                <option value="" disabled selected hidden>Select an option</option>
                                                 <option value="google">Google</option>
                                                 <option value="meta">Meta (FB/IG)</option>
                                                 <option value="referral">Referral</option>
@@ -178,8 +128,6 @@ const DemoForm = () => {
                                     <div className="space-y-3">
                                         <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest ml-1">MESSAGE</label>
                                         <textarea
-                                            name="message"
-                                            required
                                             rows={4}
                                             placeholder="How can we help you?"
                                             className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-[16px] px-6 py-4 font-cabinet font-bold text-[17px] focus:outline-none focus:border-[#2EFFA1] focus:ring-4 focus:ring-[#2EFFA1]/10 resize-none transition-all placeholder:text-[#94a3b8]"
@@ -188,32 +136,22 @@ const DemoForm = () => {
 
                                     <div className="flex items-start gap-4 pt-4">
                                         <div className="relative flex items-center pt-1">
-                                            <input
-                                                type="checkbox"
-                                                name="agree"
-                                                required
-                                                id="privacy-demo"
-                                                checked={isAgreed}
-                                                onChange={(e) => setIsAgreed(e.target.checked)}
-                                                className="peer appearance-none w-5 h-5 border border-[#cbd5e1] rounded bg-white checked:bg-[#2EFFA1] checked:border-[#2EFFA1] transition-all cursor-pointer"
-                                            />
+                                            <input type="checkbox" id="privacy-demo" className="peer appearance-none w-5 h-5 border border-[#cbd5e1] rounded bg-white checked:bg-[#2EFFA1] checked:border-[#2EFFA1] transition-all cursor-pointer" />
                                             <svg className="absolute w-3.5 h-3.5 left-[3px] top-[4px] text-white opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                             </svg>
                                         </div>
-                                        <label htmlFor="privacy-demo" className="text-[13px] text-[#64748b] leading-snug cursor-pointer select-none">
-                                            By submitting, you agree to receive messages via WhatsApp, SMS, or email to run the demo, and you accept our <Link to="/privacy-policy" className="text-[#0f172a] hover:underline" onClick={(e) => e.stopPropagation()}>[Privacy Policy]</Link> and <Link to="/terms-and-conditions" className="text-[#0f172a] hover:underline" onClick={(e) => e.stopPropagation()}>[Terms & Conditions]</Link>.
+                                        <label htmlFor="privacy-demo" className="text-[13px] text-[#64748b] leading-snug">
+                                            By submitting, you agree to receive messages via WhatsApp, SMS, or email to run the demo, and you accept our <Link to="/privacy-policy" className="text-[#0f172a] hover:underline">[Privacy Policy]</Link> and <Link to="/terms-and-conditions" className="text-[#0f172a] hover:underline">[Terms & Conditions]</Link>.
                                         </label>
                                     </div>
 
                                     <button
                                         type="submit"
-                                        disabled={isSubmitting || !isAgreed}
-                                        className="mt-12 px-12 py-5 bg-[#0f172a] text-white rounded-full font-cabinet font-bold text-[17px] shadow-[0_20px_40px_-10px_rgba(15,23,42,0.3)] hover:bg-[#1e293b] hover:scale-[1.02] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                                        className="mt-12 px-12 py-5 bg-[#0f172a] text-white rounded-full font-cabinet font-bold text-[17px] shadow-[0_20px_40px_-10px_rgba(15,23,42,0.3)] hover:bg-[#1e293b] hover:scale-[1.02] transition-all active:scale-[0.98]"
                                     >
-                                        {isSubmitting ? 'Submitting...' : (!isAgreed ? 'Please accept terms to continue' : 'Click Here to Get Started!')}
+                                        Click Here to Get Started!
                                     </button>
-                                    {errorMsg && <p className="text-red-500 mt-4 text-sm font-medium">{errorMsg}</p>}
                                 </form>
                             </div>
                         )}
