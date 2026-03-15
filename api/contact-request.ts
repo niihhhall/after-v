@@ -40,9 +40,9 @@ export default async function handler(
             console.error("Supabase Database Error:", dbError);
         }
 
-        // 1. Send Admin Notification Email
+        /* Email sending temporarily disabled
         const adminEmailData = await resend.emails.send({
-            from: 'Contact Enquiry <onboarding@resend.dev>', // Change this to your verified domain
+            from: process.env.VERIFIED_DOMAIN ? `Contact Enquiry <notifications@${process.env.VERIFIED_DOMAIN}>` : 'Contact Enquiry <onboarding@resend.dev>',
             to: process.env.ADMIN_EMAIL || 'admin@example.com',
             subject: `New ${enquiryType.toUpperCase()} Received - After5`,
             html: `
@@ -83,6 +83,7 @@ export default async function handler(
         `,
             });
         }
+        */
 
         return res.status(200).json({ success: true, message: 'Enquiry submitted successfully' });
 

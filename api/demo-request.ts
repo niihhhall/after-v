@@ -14,7 +14,7 @@ export default async function handler(
     }
 
     try {
-        const { name, email, company, phone, message, origin } = req.body;
+        const { name, email, company, phone, message, industry } = req.body;
 
         // Validate required fields
         if (!name || !email || !company || !phone || !message) {
@@ -29,22 +29,42 @@ export default async function handler(
                     email,
                     phone,
                     company,
+                    industry,
                     message,
-                    origin,
                     enquiry_type: 'demo'
                 }
             ]);
 
             if (dbError) throw dbError;
+
+            // 0.1 Notify Albert AI Agent for WhatsApp outreach
+            // We use a fire-and-forget approach with a small timeout to not delay the user
+            try {
+                fetch('https://after5-agent-production.up.railway.app/form-webhook', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        first_name: name.split(' ')[0] || name,
+                        name: name,
+                        phone: phone,
+                        company: company,
+                        industry: industry,
+                        message: message,
+                        source: 'website_demo_form'
+                    })
+                }).catch(e => console.error("Albert Webhook Error (Silent):", e));
+            } catch (albertError) {
+                console.error("Albert Notification Failed:", albertError);
+            }
         } catch (dbError) {
             console.error("Supabase Database Error:", dbError);
             // We continue with email sending even if DB fails, but log the error
         }
 
-        // 1. Send Admin Notification Email
+        /* Email sending temporarily disabled 
         const adminEmailData = await resend.emails.send({
-            from: 'Demo Request <onboarding@resend.dev>', // Change this to your verified domain (e.g. notifications@after5.ai)
-            to: process.env.ADMIN_EMAIL || 'admin@example.com', // Replace with admin email
+            from: process.env.VERIFIED_DOMAIN ? `Demo Request <notifications@${process.env.VERIFIED_DOMAIN}>` : 'Demo Request <onboarding@resend.dev>',
+            to: process.env.ADMIN_EMAIL || 'admin@example.com',
             subject: 'New Demo Request Received - After5 Digital',
             html: `
         <h2 style="color: #0f172a;">New demo request submitted</h2>
@@ -53,7 +73,7 @@ export default async function handler(
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Company:</strong> ${company}</p>
             <p><strong>Phone:</strong> ${phone}</p>
-            ${origin ? `<p><strong>Source:</strong> ${origin}</p>` : ''}
+            <p><strong>Industry:</strong> ${industry}</p>
             <br/>
             <p><strong>Message / Use Case:</strong></p>
             <blockquote style="background: #ffffff; padding: 15px; border-left: 4px solid #2EFFA1; border-radius: 4px; border: 1px solid #e2e8f0;">
@@ -67,8 +87,10 @@ export default async function handler(
             console.error("Resend Admin Email Error:", adminEmailData.error);
             return res.status(500).json({ error: 'Failed to send admin notification email' });
         }
+        */
 
-        // 2. Send User Confirmation Email
+        // 2. Send User Confirmation Email (Temporarily disabled)
+        /*
         if (process.env.NODE_ENV === 'production' && process.env.VERIFIED_DOMAIN) {
             const userEmailData = await resend.emails.send({
                 from: `After5 Team <hello@${process.env.VERIFIED_DOMAIN}>`,
@@ -86,9 +108,9 @@ export default async function handler(
 
             if (userEmailData.error) {
                 console.warn("Resend User Email Error:", userEmailData.error);
-                // Don't fail the entire request if user email fails, admin email was sent
             }
         }
+        */
 
         return res.status(200).json({ success: true, message: 'Demo request submitted successfully' });
 

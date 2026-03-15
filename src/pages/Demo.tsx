@@ -17,11 +17,10 @@ const DemoForm = () => {
         phone: '',
         company: '',
         industry: '',
-        origin: '',
         message: ''
     });
 
-    const isFormValid = formData.firstName && formData.lastName && formData.email && formData.phone && formData.company && formData.industry && formData.origin && formData.message;
+    const isFormValid = formData.firstName && formData.lastName && formData.email && formData.phone && formData.company && formData.industry && formData.message;
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -36,7 +35,6 @@ const DemoForm = () => {
         const phone = formData.get('phone') as string;
         const company = formData.get('company') as string;
         const industry = formData.get('industry') as string;
-        const origin = formData.get('origin') as string;
         const message = formData.get('message') as string;
 
         try {
@@ -50,8 +48,8 @@ const DemoForm = () => {
                     email,
                     phone,
                     company,
-                    message: `Industry: ${industry}\n\nMessage:\n${message}`,
-                    origin,
+                    industry,
+                    message
                 }),
             });
 
@@ -105,9 +103,13 @@ const DemoForm = () => {
                                             You're all set.
                                         </h3>
                                     </div>
-                                    <p className="font-inter text-[16px] text-[#64748b] leading-relaxed max-w-[540px]">
-                                        In a second you will receive a message from us, and the demo will begin. If you don't see it within a minute, check your number and try again.
-                                    </p>
+                                    <div className="space-y-4 font-inter text-[16px] text-[#64748b] leading-relaxed max-w-[540px]">
+                                        <p className="font-bold text-[#0f172a]">Thanks for submitting!</p>
+                                        <p>
+                                            You'll hear from Albert, our personal AI sales agent, very shortly.<br />
+                                            If you don't receive a message within 60 seconds, please check your number and resubmit the form.
+                                        </p>
+                                    </div>
                                 </div>
 
                                 <div className="flex flex-wrap gap-4 pt-4">
@@ -131,7 +133,6 @@ const DemoForm = () => {
                                                 phone: '',
                                                 company: '',
                                                 industry: '',
-                                                origin: '',
                                                 message: ''
                                             });
                                         }}
@@ -181,29 +182,6 @@ const DemoForm = () => {
                                         ))}
                                     </div>
 
-                                    <div className="space-y-3">
-                                        <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest ml-1">WHERE DO MOST OF YOUR ENQUIRIES COME FROM?</label>
-                                        <div className="relative">
-                                            <select
-                                                name="origin"
-                                                required
-                                                value={formData.origin}
-                                                onChange={(e) => setFormData(prev => ({ ...prev, origin: e.target.value }))}
-                                                className="w-full bg-[#f8fafc] border border-[#cbd5e1] rounded-[16px] px-6 py-4 font-cabinet font-bold text-[17px] focus:outline-none focus:border-[#2EFFA1] focus:ring-4 focus:ring-[#2EFFA1]/10 appearance-none cursor-pointer transition-all"
-                                            >
-                                                <option value="" disabled hidden>Select an option</option>
-                                                <option value="google">Google</option>
-                                                <option value="meta">Meta (FB/IG)</option>
-                                                <option value="referral">Referral</option>
-                                                <option value="other">Other</option>
-                                            </select>
-                                            <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none">
-                                                <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
-                                                    <path d="M2.5 4.5L6 8L9.5 4.5" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <div className="space-y-3">
                                         <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest ml-1">MESSAGE</label>
