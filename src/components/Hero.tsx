@@ -6,9 +6,9 @@ const Hero = () => {
   const glowRef = useGlowTrigger("hero");
   return (
     <section className="relative pt-44 lg:pt-56 pb-0 overflow-hidden bg-background">
-      {/* Background grid using the provided SVG design image */}
+      {/* Background grid - re-integrated locally with 0.15 opacity */}
       <div
-        className="absolute inset-x-0 top-0 h-[1000px] z-0 pointer-events-none opacity-[0.03]"
+        className="absolute inset-x-0 top-0 h-[1000px] z-0 pointer-events-none opacity-[0.15]"
         style={{
           backgroundImage: `url("/assets/Group.svg")`,
           backgroundSize: '100% auto',
@@ -19,8 +19,9 @@ const Hero = () => {
         }}
       />
 
-      {/* Soft white radial center glow to highlight the text */}
+      {/* Soft white radial center glow */}
       <div className="absolute top-[80px] left-1/2 -translate-x-1/2 w-[1100px] h-[600px] bg-white/80 blur-[130px] opacity-80 pointer-events-none z-0" />
+
 
       <div className="max-w-[1411px] mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center text-center gap-10">
@@ -30,17 +31,16 @@ const Hero = () => {
             transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
             className="flex flex-col items-center"
           >
-            <h1 className="font-cabinet font-bold text-[44px] min-[400px]:text-[52px] leading-none md:text-8xl tracking-tighter text-primary drop-shadow-[0_2px_10px_rgba(0,0,0,0.05)] md:drop-shadow-none">
-              <span className="block md:inline">
+            <h1 className="font-cabinet font-bold text-[36px] min-[400px]:text-[44px] leading-[1.1] md:text-[96px] md:leading-[105px] tracking-tight text-primary drop-shadow-[0_2px_10px_rgba(0,0,0,0.05)] md:drop-shadow-none flex flex-col items-center">
+              <span className="flex flex-wrap items-center justify-center gap-x-2 md:gap-x-4">
                 <span className="font-medium opacity-80">We Turn</span>{" "}
                 <span className="uppercase text-primary font-bold">LEADS</span>{" "}
                 <span className="font-medium opacity-80">Into</span>
               </span>
-              <span className="hidden md:inline"> </span>
-              <span className="uppercase text-primary block md:inline text-[52px] min-[400px]:text-[64px] md:text-8xl mt-1 md:mt-2 tracking-[-1px] md:tracking-tighter">
+              <span className="uppercase text-primary text-[44px] min-[400px]:text-[52px] md:text-[110px] tracking-[-1px] md:tracking-[-4px] font-bold">
                 REVENUE
               </span>
-              <span className="font-cabinet font-normal text-[28px] min-[400px]:text-[32px] md:text-7xl mt-4 md:mt-6 block tracking-normal drop-shadow-none">
+              <span className="font-cabinet font-normal text-[22px] min-[400px]:text-[26px] md:text-[68px] mt-2 md:mt-4 block tracking-normal opacity-90">
                 With 24/7 AI Sales Reps
               </span>
             </h1>
@@ -50,15 +50,14 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-inter text-[17px] md:text-xl text-primary/80 max-w-2xl leading-relaxed px-4 md:px-0 mt-[-10px] md:mt-0"
+            className="font-inter text-[15px] md:text-xl text-primary/80 max-w-2xl leading-relaxed px-4 md:px-0 mt-[-20px] md:mt-0"
           >
             We build{" "}
             <span className="font-bold text-primary">
               bespoke AI Sales Agents
             </span>{" "}
             to catch, qualify, follow up and book your leads across{" "}
-            <span className="font-bold text-primary">WhatsApp</span>,{" "}
-            <span className="font-bold text-primary">email</span> or{" "}
+            <span className="font-bold text-primary whitespace-nowrap">WhatsApp, email</span> or{" "}
             <span className="font-bold text-primary">sms</span>. 24/7.
           </motion.p>
 
