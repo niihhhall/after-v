@@ -9,7 +9,10 @@ export default async function handler(
     req: VercelRequest,
     res: VercelResponse
 ) {
-    // Only allow POST requests
+    // 1. Ensure absolute JSON response
+    res.setHeader('Content-Type', 'application/json');
+
+    // 2. Only allow POST
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method Not Allowed' });
     }
@@ -22,48 +25,48 @@ export default async function handler(
             return res.status(400).json({ error: 'Missing required fields' });
         }
 
-        // 0. Insert into Supabase
-        try {
-            const { error: dbError } = await supabase.from('leads').insert([
-                {
-                    name,
-                    email,
-                    phone,
-                    company,
-                    industry,
-                    message,
-                    enquiry_type: 'demo'
-                }
-            ]);
-
-            if (dbError) throw dbError;
-
-            // 0.1 Notify Albert AI Agent for WhatsApp outreach
+        // 3. Insert into Supabase with extra safety
+        if (supabase) {
             try {
-                // Use globalThis.fetch to be safe in different Node environments
-                const globalFetch = (globalThis as any).fetch;
-                if (typeof globalFetch === 'function') {
-                    globalFetch('https://after5-agent-production.up.railway.app/form-webhook', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            first_name: name.split(' ')[0] || name,
-                            name: name,
-                            phone: phone,
-                            company: company,
-                            industry: industry,
-                            message: message,
-                            source: 'website_demo_form'
-                        })
-                    }).catch((e: any) => console.error("Albert Webhook Error (Silent):", e));
-                }
-            } catch (albertError) {
-                console.error("Albert Notification Failed:", albertError);
+                const { error: dbError } = await supabase.from('leads').insert([
+                    {
+                        name,
+                        email,
+                        phone,
+                        company,
+                        industry,
+                        message,
+                        enquiry_type: 'demo'
+                    }
+                ]);
+                if (dbError) console.error("Supabase Insert Error:", dbError);
+            } catch (err: any) {
+                console.error("Supabase Try/Catch Error:", err.message);
             }
-        } catch (dbError) {
-            console.error("Supabase Database Error:", dbError);
-            // We continue even if DB fails to not block the user UI
         }
+
+            // 4. Webhook Notification (Fire and forget safely)
+            try {
+                const albertUrl = 'https://after5-agent-production.up.railway.app/form-webhook';
+                const payload = {
+                    first_name: name.split(' ')[0] || name,
+                    name: name,
+                    phone: phone,
+                    company: company,
+                    industry: industry,
+                    message: message,
+                    source: 'website_demo_form'
+                };
+
+                // Use a non-blocking fetch
+                (globalThis as any).fetch?.(albertUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                }).catch((e: any) => console.error("Albert Webhook Fetch Error:", e));
+            } catch (err: any) {
+                console.error("Albert Webhook Init Error:", err.message);
+            }
 
         /* Email sending temporarily disabled 
         const adminEmailData = await resend.emails.send({

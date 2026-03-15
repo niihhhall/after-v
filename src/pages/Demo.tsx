@@ -27,15 +27,15 @@ const DemoForm = () => {
         setErrorMsg('');
         setIsSubmitting(true);
 
-        const formData = new FormData(e.currentTarget);
-        const firstName = formData.get('firstName') as string;
-        const lastName = formData.get('lastName') as string;
+        const fd = new FormData(e.currentTarget);
+        const firstName = fd.get('firstName') as string;
+        const lastName = fd.get('lastName') as string;
         const name = `${firstName} ${lastName}`.trim();
-        const email = formData.get('email') as string;
-        const phone = formData.get('phone') as string;
-        const company = formData.get('company') as string;
-        const industry = formData.get('industry') as string;
-        const message = formData.get('message') as string;
+        const email = fd.get('email') as string;
+        const phone = fd.get('phone') as string;
+        const company = fd.get('company') as string;
+        const industry = fd.get('industry') as string;
+        const message = fd.get('message') as string;
 
         try {
             const response = await fetch('/api/demo-request', {
