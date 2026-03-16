@@ -1,191 +1,112 @@
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { useGlowTrigger } from '../hooks/useGlowTrigger';
+import { COUNTRIES } from '../data/countries';
 
-const COUNTRY_CODES = [
-    { code: '+44', label: '+44' },
-    { code: '+1', label: '+1' },
-    { code: '+91', label: '+91' },
-    { code: '+971', label: '+971' },
-    { code: '+61', label: '+61' },
-    { code: '+65', label: '+65' },
-    { code: '+49', label: '+49' },
-    { code: '+33', label: '+33' },
-    { code: '+92', label: '+92' },
-    { code: '+93', label: '+93' },
-    { code: '+355', label: '+355' },
-    { code: '+213', label: '+213' },
-    { code: '+376', label: '+376' },
-    { code: '+244', label: '+244' },
-    { code: '+54', label: '+54' },
-    { code: '+374', label: '+374' },
-    { code: '+43', label: '+43' },
-    { code: '+994', label: '+994' },
-    { code: '+973', label: '+973' },
-    { code: '+880', label: '+880' },
-    { code: '+32', label: '+32' },
-    { code: '+501', label: '+501' },
-    { code: '+229', label: '+229' },
-    { code: '+975', label: '+975' },
-    { code: '+591', label: '+591' },
-    { code: '+387', label: '+387' },
-    { code: '+267', label: '+267' },
-    { code: '+55', label: '+55' },
-    { code: '+673', label: '+673' },
-    { code: '+359', label: '+359' },
-    { code: '+226', label: '+226' },
-    { code: '+257', label: '+257' },
-    { code: '+855', label: '+855' },
-    { code: '+237', label: '+237' },
-    { code: '+238', label: '+238' },
-    { code: '+236', label: '+236' },
-    { code: '+235', label: '+235' },
-    { code: '+56', label: '+56' },
-    { code: '+57', label: '+57' },
-    { code: '+269', label: '+269' },
-    { code: '+242', label: '+242' },
-    { code: '+682', label: '+682' },
-    { code: '+506', label: '+506' },
-    { code: '+385', label: '+385' },
-    { code: '+53', label: '+53' },
-    { code: '+357', label: '+357' },
-    { code: '+420', label: '+420' },
-    { code: '+45', label: '+45' },
-    { code: '+253', label: '+253' },
-    { code: '+7', label: '+7' },
-    { code: '+20', label: '+20' },
-    { code: '+503', label: '+503' },
-    { code: '+240', label: '+240' },
-    { code: '+291', label: '+291' },
-    { code: '+372', label: '+372' },
-    { code: '+251', label: '+251' },
-    { code: '+679', label: '+679' },
-    { code: '+358', label: '+358' },
-    { code: '+241', label: '+241' },
-    { code: '+220', label: '+220' },
-    { code: '+995', label: '+995' },
-    { code: '+233', label: '+233' },
-    { code: '+30', label: '+30' },
-    { code: '+299', label: '+299' },
-    { code: '+502', label: '+502' },
-    { code: '+224', label: '+224' },
-    { code: '+592', label: '+592' },
-    { code: '+509', label: '+509' },
-    { code: '+504', label: '+504' },
-    { code: '+852', label: '+852' },
-    { code: '+36', label: '+36' },
-    { code: '+354', label: '+354' },
-    { code: '+62', label: '+62' },
-    { code: '+98', label: '+98' },
-    { code: '+964', label: '+964' },
-    { code: '+353', label: '+353' },
-    { code: '+972', label: '+972' },
-    { code: '+39', label: '+39' },
-    { code: '+225', label: '+225' },
-    { code: '+1876', label: '+1876' },
-    { code: '+962', label: '+962' },
-    { code: '+254', label: '+254' },
-    { code: '+965', label: '+965' },
-    { code: '+996', label: '+996' },
-    { code: '+856', label: '+856' },
-    { code: '+371', label: '+371' },
-    { code: '+961', label: '+961' },
-    { code: '+266', label: '+266' },
-    { code: '+231', label: '+231' },
-    { code: '+218', label: '+218' },
-    { code: '+423', label: '+423' },
-    { code: '+370', label: '+370' },
-    { code: '+352', label: '+352' },
-    { code: '+853', label: '+853' },
-    { code: '+389', label: '+389' },
-    { code: '+261', label: '+261' },
-    { code: '+265', label: '+265' },
-    { code: '+60', label: '+60' },
-    { code: '+960', label: '+960' },
-    { code: '+223', label: '+223' },
-    { code: '+356', label: '+356' },
-    { code: '+692', label: '+692' },
-    { code: '+222', label: '+222' },
-    { code: '+230', label: '+230' },
-    { code: '+52', label: '+52' },
-    { code: '+691', label: '+691' },
-    { code: '+373', label: '+373' },
-    { code: '+377', label: '+377' },
-    { code: '+976', label: '+976' },
-    { code: '+382', label: '+382' },
-    { code: '+212', label: '+212' },
-    { code: '+258', label: '+258' },
-    { code: '+95', label: '+95' },
-    { code: '+264', label: '+264' },
-    { code: '+674', label: '+674' },
-    { code: '+977', label: '+977' },
-    { code: '+31', label: '+31' },
-    { code: '+64', label: '+64' },
-    { code: '+505', label: '+505' },
-    { code: '+227', label: '+227' },
-    { code: '+234', label: '+234' },
-    { code: '+47', label: '+47' },
-    { code: '+968', label: '+968' },
-    { code: '+92', label: '+92' },
-    { code: '+680', label: '+680' },
-    { code: '+970', label: '+970' },
-    { code: '+507', label: '+507' },
-    { code: '+675', label: '+675' },
-    { code: '+595', label: '+595' },
-    { code: '+51', label: '+51' },
-    { code: '+63', label: '+63' },
-    { code: '+48', label: '+48' },
-    { code: '+351', label: '+351' },
-    { code: '+974', label: '+974' },
-    { code: '+40', label: '+40' },
-    { code: '+250', label: '+250' },
-    { code: '+685', label: '+685' },
-    { code: '+378', label: '+378' },
-    { code: '+239', label: '+239' },
-    { code: '+966', label: '+966' },
-    { code: '+221', label: '+221' },
-    { code: '+381', label: '+381' },
-    { code: '+248', label: '+248' },
-    { code: '+232', label: '+232' },
-    { code: '+421', label: '+421' },
-    { code: '+386', label: '+386' },
-    { code: '+677', label: '+677' },
-    { code: '+252', label: '+252' },
-    { code: '+27', label: '+27' },
-    { code: '+82', label: '+82' },
-    { code: '+211', label: '+211' },
-    { code: '+34', label: '+34' },
-    { code: '+94', label: '+94' },
-    { code: '+249', label: '+249' },
-    { code: '+597', label: '+597' },
-    { code: '+268', label: '+268' },
-    { code: '+46', label: '+46' },
-    { code: '+41', label: '+41' },
-    { code: '+963', label: '+963' },
-    { code: '+886', label: '+886' },
-    { code: '+992', label: '+992' },
-    { code: '+255', label: '+255' },
-    { code: '+66', label: '+66' },
-    { code: '+228', label: '+228' },
-    { code: '+676', label: '+676' },
-    { code: '+216', label: '+216' },
-    { code: '+90', label: '+90' },
-    { code: '+993', label: '+993' },
-    { code: '+688', label: '+688' },
-    { code: '+256', label: '+256' },
-    { code: '+380', label: '+380' },
-    { code: '+598', label: '+598' },
-    { code: '+998', label: '+998' },
-    { code: '+678', label: '+678' },
-    { code: '+58', label: '+58' },
-    { code: '+84', label: '+84' },
-    { code: '+967', label: '+967' },
-    { code: '+260', label: '+260' },
-    { code: '+263', label: '+263' }
-];
+const CountrySelector = ({ value, onChange }: { value: string, onChange: (val: string) => void }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [search, setSearch] = useState('');
+    const dropdownRef = useRef<HTMLDivElement>(null);
+    const selectedCountry = COUNTRIES.find(c => c.code === value) || COUNTRIES[0];
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    const filteredCountries = COUNTRIES.filter(c =>
+        c.name.toLowerCase().includes(search.toLowerCase()) ||
+        c.code.includes(search)
+    );
+
+    return (
+        <div className="relative" ref={dropdownRef}>
+            <button
+                type="button"
+                onClick={() => setIsOpen(!isOpen)}
+                className="flex items-center gap-2 bg-transparent border-none pl-6 pr-4 py-4 font-cabinet font-bold text-[17px] text-[#0f172a] focus:outline-none cursor-pointer border-r border-[#cbd5e1]/30 hover:bg-black/5 transition-colors group h-full"
+            >
+                <span className="text-[20px]">{selectedCountry.flag}</span>
+                <span>{selectedCountry.code}</span>
+                <svg
+                    className={`w-4 h-4 transition-transform duration-300 text-[#64748b] group-hover:text-[#0f172a] ${isOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                        transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+                        className="absolute top-full left-0 mt-2 w-[300px] bg-white border border-[#cbd5e1] rounded-[20px] shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-50 overflow-hidden flex flex-col"
+                    >
+                        <div className="p-3 border-b border-background">
+                            <div className="relative">
+                                <svg
+                                    className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94a3b8]"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                                <input
+                                    autoFocus
+                                    type="text"
+                                    placeholder="Search country or code..."
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    className="w-full pl-9 pr-4 py-2 bg-[#f8fafc] border border-[#e2e8f0] rounded-[12px] text-[14px] font-inter font-medium focus:outline-none focus:border-accent-green focus:ring-4 focus:ring-accent-green/5 transition-all"
+                                />
+                            </div>
+                        </div>
+                        <div className="overflow-y-auto max-h-[300px] flex-1 py-1 px-1 custom-scrollbar">
+                            {filteredCountries.length > 0 ? (
+                                filteredCountries.map((c, idx) => (
+                                    <button
+                                        key={`${c.name}-${c.code}-${idx}`}
+                                        type="button"
+                                        onClick={() => {
+                                            onChange(c.code);
+                                            setIsOpen(false);
+                                            setSearch('');
+                                        }}
+                                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-[12px] hover:bg-background transition-colors text-left ${value === c.code ? 'bg-accent-green/10' : ''}`}
+                                    >
+                                        <div className="flex items-center gap-3 max-w-[70%]">
+                                            <span className="text-[20px] shrink-0">{c.flag}</span>
+                                            <span className="text-[14px] font-inter font-semibold text-[#0f172a] truncate">{c.name}</span>
+                                        </div>
+                                        <span className="text-[13px] font-cabinet font-bold text-[#64748b] shrink-0">{c.code}</span>
+                                    </button>
+                                ))
+                            ) : (
+                                <div className="px-4 py-8 text-center">
+                                    <p className="text-[#94a3b8] text-[14px] font-inter">No countries found</p>
+                                </div>
+                            )}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
 
 const DemoForm = () => {
     const [formSubmitted, setFormSubmitted] = useState(false);
@@ -350,16 +271,11 @@ const DemoForm = () => {
                                             <div key={i} className="space-y-3">
                                                 <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest ml-1">{field.label}</label>
                                                 {field.name === 'phone' ? (
-                                                    <div className={`flex items-center bg-white border ${isPhoneFocused ? 'border-accent-green ring-4 ring-accent-green/10' : 'border-[#cbd5e1]'} rounded-[16px] transition-all overflow-hidden`}>
-                                                        <select
+                                                    <div className={`flex items-center bg-white border ${isPhoneFocused ? 'border-accent-green ring-4 ring-accent-green/10' : 'border-[#cbd5e1]'} rounded-[16px] transition-all h-[60px] md:h-[64px] relative`}>
+                                                        <CountrySelector
                                                             value={formData.countryCode}
-                                                            onChange={(e) => setFormData(prev => ({ ...prev, countryCode: e.target.value }))}
-                                                            className="bg-transparent border-none pl-6 pr-2 py-4 font-cabinet font-bold text-[17px] text-[#0f172a] focus:outline-none cursor-pointer appearance-none border-r border-[#cbd5e1]/30"
-                                                        >
-                                                            {COUNTRY_CODES.map(c => (
-                                                                <option key={c.code} value={c.code}>{c.label}</option>
-                                                            ))}
-                                                        </select>
+                                                            onChange={(val) => setFormData(prev => ({ ...prev, countryCode: val }))}
+                                                        />
                                                         <input
                                                             type="tel"
                                                             name="phone"
@@ -369,7 +285,7 @@ const DemoForm = () => {
                                                             onBlur={() => setIsPhoneFocused(false)}
                                                             onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
                                                             placeholder="7123 456789"
-                                                            className="flex-1 bg-transparent border-none pl-4 pr-6 py-4 font-cabinet font-bold text-[17px] focus:outline-none placeholder:text-[#94a3b8]"
+                                                            className="flex-1 bg-transparent border-none pl-4 pr-6 py-4 font-cabinet font-bold text-[17px] focus:outline-none placeholder:text-[#94a3b8] rounded-r-[16px]"
                                                         />
                                                     </div>
                                                 ) : (
