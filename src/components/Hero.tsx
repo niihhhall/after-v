@@ -8,7 +8,7 @@ const Hero = () => {
     <section className="relative pt-44 lg:pt-56 pb-0 overflow-hidden bg-background">
       {/* Background grid - re-integrated locally with 0.15 opacity */}
       <div
-        className="absolute inset-x-0 top-0 h-[1000px] z-0 pointer-events-none opacity-[0.15]"
+        className="absolute inset-x-0 top-0 h-[1000px] z-0 pointer-events-none opacity-[0.15] blur-[2px]"
         style={{
           backgroundImage: `url("/assets/Group.svg")`,
           backgroundSize: '100% auto',
