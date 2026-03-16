@@ -288,8 +288,8 @@ const DemoForm = () => {
                                     <div className="space-y-4 font-inter text-[16px] text-[#64748b] leading-relaxed max-w-[540px]">
                                         <p className="font-bold text-[#0f172a]">Thanks for submitting!</p>
                                         <p>
-                                            You'll hear from Albert, our personal AI sales agent, very shortly.<br />
-                                            If you don't receive a message within 60 seconds, please check your number and resubmit the form.
+                                            Very shortly, you'll hear from Albert, our personal AI sales agent, on WhatsApp.<br />
+                                            If you don't receive a message within 60 seconds, please check your number and then resubmit the form.
                                         </p>
                                     </div>
                                 </div>
