@@ -5,6 +5,7 @@ import PageHero from '../components/PageHero';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { useGlowTrigger } from '../hooks/useGlowTrigger';
 import { COUNTRIES } from '../data/countries';
+const IS_DEMO_PAUSED = true; // Change this to false to resume the demo form
 
 const CountrySelector = ({ value, onChange }: { value: string, onChange: (val: string) => void }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -133,7 +134,7 @@ const DemoForm = () => {
 
         const { firstName, lastName, email, phone, countryCode, company, industry } = formData;
         const name = `${firstName} ${lastName}`.trim();
-        const fullPhone = `${countryCode}${phone}`;
+        const fullPhone = `${countryCode}${phone}`.replace(/[- ]/g, '');
 
         try {
             const response = await fetch('/api/demo-request', {
@@ -255,120 +256,150 @@ const DemoForm = () => {
                                     Just drop your details down below to start right away
                                 </p>
 
-                                <form
+                                 <form
                                     className="space-y-8"
                                     onSubmit={handleSubmit}
                                 >
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-                                        {[
-                                            { label: 'FIRST NAME', name: 'firstName', placeholder: '' },
-                                            { label: 'LAST NAME', name: 'lastName', placeholder: '' },
-                                            { label: 'EMAIL ADDRESS', name: 'email', type: 'email', placeholder: '' },
-                                            { label: 'MOBILE NUMBER (WHATSAPP)', name: 'phone', type: 'tel', placeholder: '' },
-                                            { label: 'COMPANY NAME', name: 'company', placeholder: '' },
-                                            { label: 'INDUSTRY', name: 'industry', placeholder: '' },
-                                        ].map((field, i) => (
-                                            <div key={i} className="space-y-3">
-                                                <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest ml-1">{field.label}</label>
-                                                {field.name === 'phone' ? (
-                                                    <div className={`flex items-center bg-white border ${isPhoneFocused ? 'border-accent-green ring-4 ring-accent-green/10' : 'border-[#cbd5e1]'} rounded-[16px] transition-all h-[60px] md:h-[64px] relative`}>
-                                                        <CountrySelector
-                                                            value={formData.countryCode}
-                                                            onChange={(val) => setFormData(prev => ({ ...prev, countryCode: val }))}
-                                                        />
-                                                        <input
-                                                            type="tel"
-                                                            name="phone"
-                                                            required
-                                                            value={formData.phone}
-                                                            onFocus={() => setIsPhoneFocused(true)}
-                                                            onBlur={() => setIsPhoneFocused(false)}
-                                                            onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                                                            placeholder="7123 456789"
-                                                            className="flex-1 bg-transparent border-none pl-4 pr-6 py-4 font-cabinet font-bold text-[17px] focus:outline-none placeholder:text-[#94a3b8] rounded-r-[16px]"
-                                                        />
-                                                    </div>
-                                                ) : (
-                                                    <input
-                                                        type={field.type || "text"}
-                                                        name={field.name}
-                                                        required
-                                                        value={(formData as any)[field.name]}
-                                                        onChange={(e) => setFormData(prev => ({ ...prev, [field.name]: e.target.value }))}
-                                                        placeholder={field.placeholder}
-                                                        className="w-full bg-white border border-[#cbd5e1] rounded-[16px] px-6 py-4 font-cabinet font-bold text-[17px] text-[#0f172a] focus:outline-none focus:border-[#2EFFA1] focus:ring-4 focus:ring-[#2EFFA1]/10 transition-all placeholder:text-[#94a3b8]"
-                                                    />
-                                                )}
+                                    {IS_DEMO_PAUSED ? (
+                                        <div className="bg-[#f8fafc] border border-[#cbd5e1] rounded-[24px] p-8 md:p-10 space-y-6 text-center">
+                                            <div className="w-16 h-16 bg-accent-green/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#36D78E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <line x1="10" y1="15" x2="14" y2="15"></line>
+                                                    <path d="M12 9h.01"></path>
+                                                </svg>
                                             </div>
-                                        ))}
-
-                                    </div>
-
-
-
-                                    <div className="flex items-start gap-4 pt-4">
-                                        <div className="relative flex items-center pt-1">
-                                            <input
-                                                type="checkbox"
-                                                name="agree"
-                                                required
-                                                id="privacy-demo"
-                                                checked={isAgreed}
-                                                onChange={(e) => setIsAgreed(e.target.checked)}
-                                                className="peer appearance-none w-5 h-5 border border-[#cbd5e1] rounded bg-white checked:bg-accent-green checked:border-accent-green transition-all cursor-pointer"
-                                            />
-                                            <svg className="absolute w-3.5 h-3.5 left-[3px] top-[4px] text-white opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                            </svg>
+                                            <div className="space-y-3">
+                                                <h4 className="font-cabinet font-bold text-[22px] text-[#0f172a]">Demo Form Temporarily Paused</h4>
+                                                <p className="font-inter text-[15px] text-[#64748b] leading-relaxed max-w-[400px] mx-auto">
+                                                    We're currently making some exciting updates to our demo system. We'll be back shortly! 
+                                                </p>
+                                            </div>
+                                            <div className="pt-4">
+                                                <p className="text-[14px] text-[#0f172a] font-bold mb-4">Want to talk to us instead?</p>
+                                                <Link to="/contact">
+                                                    <motion.button
+                                                        whileHover={{ scale: 1.02 }}
+                                                        whileTap={{ scale: 0.98 }}
+                                                        className="px-8 py-4 bg-[#0f172a] text-white rounded-full font-cabinet font-bold text-[16px] transition-all hover:bg-[#1e293b] shadow-md w-full sm:w-auto"
+                                                    >
+                                                        Book a Strategy Call
+                                                    </motion.button>
+                                                </Link>
+                                            </div>
                                         </div>
-                                        <label htmlFor="privacy-demo" className="text-[13px] text-[#64748b] leading-snug cursor-pointer select-none">
-                                            By submitting, you agree to receive messages via WhatsApp, SMS, or email to run the demo, and you accept our <Link to="/privacy-policy" className="text-[#0f172a] hover:underline" onClick={(e) => e.stopPropagation()}>[Privacy Policy]</Link> and <Link to="/terms-and-conditions" className="text-[#0f172a] hover:underline" onClick={(e) => e.stopPropagation()}>[Terms & Conditions]</Link>.
-                                        </label>
-                                    </div>
+                                    ) : (
+                                        <>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                                                {[
+                                                    { label: 'FIRST NAME', name: 'firstName', placeholder: '' },
+                                                    { label: 'LAST NAME', name: 'lastName', placeholder: '' },
+                                                    { label: 'EMAIL ADDRESS', name: 'email', type: 'email', placeholder: '' },
+                                                    { label: 'MOBILE NUMBER (WHATSAPP)', name: 'phone', type: 'tel', placeholder: '' },
+                                                    { label: 'COMPANY NAME', name: 'company', placeholder: '' },
+                                                    { label: 'INDUSTRY', name: 'industry', placeholder: '' },
+                                                ].map((field, i) => (
+                                                    <div key={i} className="space-y-3">
+                                                        <label className="block text-[11px] font-cabinet font-bold text-[#475569] uppercase tracking-widest ml-1">{field.label}</label>
+                                                        {field.name === 'phone' ? (
+                                                            <div className={`flex items-center bg-white border ${isPhoneFocused ? 'border-accent-green ring-4 ring-accent-green/10' : 'border-[#cbd5e1]'} rounded-[16px] transition-all h-[60px] md:h-[64px] relative`}>
+                                                                <CountrySelector
+                                                                    value={formData.countryCode}
+                                                                    onChange={(val) => setFormData(prev => ({ ...prev, countryCode: val }))}
+                                                                />
+                                                                <input
+                                                                    type="tel"
+                                                                    name="phone"
+                                                                    required
+                                                                    value={formData.phone}
+                                                                    onFocus={() => setIsPhoneFocused(true)}
+                                                                    onBlur={() => setIsPhoneFocused(false)}
+                                                                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                                                                    placeholder="7123 456789"
+                                                                    className="flex-1 bg-transparent border-none pl-4 pr-6 py-4 font-cabinet font-bold text-[17px] focus:outline-none placeholder:text-[#94a3b8] rounded-r-[16px]"
+                                                                />
+                                                            </div>
+                                                        ) : (
+                                                            <input
+                                                                type={field.type || "text"}
+                                                                name={field.name}
+                                                                required
+                                                                value={(formData as any)[field.name]}
+                                                                onChange={(e) => setFormData(prev => ({ ...prev, [field.name]: e.target.value }))}
+                                                                placeholder={field.placeholder}
+                                                                className="w-full bg-white border border-[#cbd5e1] rounded-[16px] px-6 py-4 font-cabinet font-bold text-[17px] text-[#0f172a] focus:outline-none focus:border-[#2EFFA1] focus:ring-4 focus:ring-[#2EFFA1]/10 transition-all placeholder:text-[#94a3b8]"
+                                                            />
+                                                        )}
+                                                    </div>
+                                                ))}
 
-                                    <motion.div
-                                        variants={{
-                                            hidden: { opacity: 0, scale: 0.95 },
-                                            visible: { opacity: 1, scale: 1 }
-                                        }}
-                                    >
-                                        <motion.button
-                                            type="submit"
-                                            disabled={isSubmitting || !isAgreed || !isFormValid}
-                                            whileHover={(isAgreed && isFormValid) ? "hover" : "rest"}
-                                            whileTap={{ scale: 0.98 }}
-                                            initial="rest"
-                                            animate="rest"
-                                            variants={{
-                                                rest: { backgroundColor: '#0f172a', scale: 1, opacity: (isAgreed && isFormValid) ? 1 : 0.5 },
-                                                hover: { backgroundColor: '#2EFFA1', scale: 1.02 }
-                                            }}
-                                            transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
-                                            className={`mt-12 relative px-14 py-4 md:py-5 rounded-full font-cabinet font-bold text-[17px] w-full md:w-auto overflow-hidden flex items-center justify-center gap-3 text-white shadow-[0_20px_40px_-10px_rgba(15,23,42,0.3)] ${(!isAgreed || !isFormValid) ? 'cursor-not-allowed' : ''}`}
-                                        >
-                                            <span>{isSubmitting ? 'Submitting...' : (!isFormValid ? 'Please fill all details' : (!isAgreed ? 'Please accept terms to continue' : 'Click Here to Get Started!'))}</span>
+                                            </div>
 
-                                            {isAgreed && !isSubmitting && (
-                                                <motion.svg
+                                            <div className="flex items-start gap-4 pt-4">
+                                                <div className="relative flex items-center pt-1">
+                                                    <input
+                                                        type="checkbox"
+                                                        name="agree"
+                                                        required
+                                                        id="privacy-demo"
+                                                        checked={isAgreed}
+                                                        onChange={(e) => setIsAgreed(e.target.checked)}
+                                                        className="peer appearance-none w-5 h-5 border border-[#cbd5e1] rounded bg-white checked:bg-accent-green checked:border-accent-green transition-all cursor-pointer"
+                                                    />
+                                                    <svg className="absolute w-3.5 h-3.5 left-[3px] top-[4px] text-white opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                </div>
+                                                <label htmlFor="privacy-demo" className="text-[13px] text-[#64748b] leading-snug cursor-pointer select-none">
+                                                    By submitting, you agree to receive messages via WhatsApp, SMS, or email to run the demo, and you accept our <Link to="/privacy-policy" className="text-[#0f172a] hover:underline" onClick={(e) => e.stopPropagation()}>[Privacy Policy]</Link> and <Link to="/terms-and-conditions" className="text-[#0f172a] hover:underline" onClick={(e) => e.stopPropagation()}>[Terms & Conditions]</Link>.
+                                                </label>
+                                            </div>
+
+                                            <motion.div
+                                                variants={{
+                                                    hidden: { opacity: 0, scale: 0.95 },
+                                                    visible: { opacity: 1, scale: 1 }
+                                                }}
+                                            >
+                                                <motion.button
+                                                    type="submit"
+                                                    disabled={isSubmitting || !isAgreed || !isFormValid}
+                                                    whileHover={(isAgreed && isFormValid) ? "hover" : "rest"}
+                                                    whileTap={{ scale: 0.98 }}
+                                                    initial="rest"
+                                                    animate="rest"
                                                     variants={{
-                                                        rest: { x: -4, opacity: 0 },
-                                                        hover: { x: 0, opacity: 1 }
+                                                        rest: { backgroundColor: '#0f172a', scale: 1, opacity: (isAgreed && isFormValid) ? 1 : 0.5 },
+                                                        hover: { backgroundColor: '#2EFFA1', scale: 1.02 }
                                                     }}
-                                                    transition={{ duration: 0.25 }}
-                                                    className="w-5 h-5 ml-1"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2.5"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
+                                                    transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
+                                                    className={`mt-12 relative px-14 py-4 md:py-5 rounded-full font-cabinet font-bold text-[17px] w-full md:w-auto overflow-hidden flex items-center justify-center gap-3 text-white shadow-[0_20px_40px_-10px_rgba(15,23,42,0.3)] ${(!isAgreed || !isFormValid) ? 'cursor-not-allowed' : ''}`}
                                                 >
-                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                                </motion.svg>
-                                            )}
-                                        </motion.button>
-                                    </motion.div>
+                                                    <span>{isSubmitting ? 'Submitting...' : (!isFormValid ? 'Please fill all details' : (!isAgreed ? 'Please accept terms to continue' : 'Click Here to Get Started!'))}</span>
+
+                                                    {isAgreed && !isSubmitting && (
+                                                        <motion.svg
+                                                            variants={{
+                                                                rest: { x: -4, opacity: 0 },
+                                                                hover: { x: 0, opacity: 1 }
+                                                            }}
+                                                            transition={{ duration: 0.25 }}
+                                                            className="w-5 h-5 ml-1"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="currentColor"
+                                                            strokeWidth="2.5"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                        >
+                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                        </motion.svg>
+                                                    )}
+                                                </motion.button>
+                                            </motion.div>
+                                        </>
+                                    )}
                                     {errorMsg && <p className="text-red-500 mt-4 text-sm font-medium">{errorMsg}</p>}
                                 </form>
                             </div>
