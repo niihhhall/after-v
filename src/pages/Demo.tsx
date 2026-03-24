@@ -5,7 +5,7 @@ import PageHero from '../components/PageHero';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { useGlowTrigger } from '../hooks/useGlowTrigger';
 import { COUNTRIES } from '../data/countries';
-const IS_DEMO_PAUSED = true; // Change this to false to resume the demo form
+const IS_DEMO_ACTIVE = true; // Set this to false to temporarily pause the demo form
 
 const CountrySelector = ({ value, onChange }: { value: string, onChange: (val: string) => void }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -260,35 +260,7 @@ const DemoForm = () => {
                                     className="space-y-8"
                                     onSubmit={handleSubmit}
                                 >
-                                    {IS_DEMO_PAUSED ? (
-                                        <div className="bg-[#f8fafc] border border-[#cbd5e1] rounded-[24px] p-8 md:p-10 space-y-6 text-center">
-                                            <div className="w-16 h-16 bg-accent-green/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#36D78E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                    <line x1="10" y1="15" x2="14" y2="15"></line>
-                                                    <path d="M12 9h.01"></path>
-                                                </svg>
-                                            </div>
-                                            <div className="space-y-3">
-                                                <h4 className="font-cabinet font-bold text-[22px] text-[#0f172a]">Demo Form Temporarily Paused</h4>
-                                                <p className="font-inter text-[15px] text-[#64748b] leading-relaxed max-w-[400px] mx-auto">
-                                                    We're currently making some exciting updates to our demo system. We'll be back shortly! 
-                                                </p>
-                                            </div>
-                                            <div className="pt-4">
-                                                <p className="text-[14px] text-[#0f172a] font-bold mb-4">Want to talk to us instead?</p>
-                                                <Link to="/contact">
-                                                    <motion.button
-                                                        whileHover={{ scale: 1.02 }}
-                                                        whileTap={{ scale: 0.98 }}
-                                                        className="px-8 py-4 bg-[#0f172a] text-white rounded-full font-cabinet font-bold text-[16px] transition-all hover:bg-[#1e293b] shadow-md w-full sm:w-auto"
-                                                    >
-                                                        Book a Strategy Call
-                                                    </motion.button>
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    ) : (
+                                    {IS_DEMO_ACTIVE ? (
                                         <>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                                                 {[
@@ -399,6 +371,34 @@ const DemoForm = () => {
                                                 </motion.button>
                                             </motion.div>
                                         </>
+                                    ) : (
+                                        <div className="bg-[#f8fafc] border border-[#cbd5e1] rounded-[24px] p-8 md:p-10 space-y-6 text-center">
+                                            <div className="w-16 h-16 bg-accent-green/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#36D78E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <line x1="10" y1="15" x2="14" y2="15"></line>
+                                                    <path d="M12 9h.01"></path>
+                                                </svg>
+                                            </div>
+                                            <div className="space-y-3">
+                                                <h4 className="font-cabinet font-bold text-[22px] text-[#0f172a]">Demo Form Temporarily Paused</h4>
+                                                <p className="font-inter text-[15px] text-[#64748b] leading-relaxed max-w-[400px] mx-auto">
+                                                    We're currently making some exciting updates to our demo system. We'll be back shortly! 
+                                                </p>
+                                            </div>
+                                            <div className="pt-4">
+                                                <p className="text-[14px] text-[#0f172a] font-bold mb-4">Want to talk to us instead?</p>
+                                                <Link to="/contact">
+                                                    <motion.button
+                                                        whileHover={{ scale: 1.02 }}
+                                                        whileTap={{ scale: 0.98 }}
+                                                        className="px-8 py-4 bg-[#0f172a] text-white rounded-full font-cabinet font-bold text-[16px] transition-all hover:bg-[#1e293b] shadow-md w-full sm:w-auto"
+                                                    >
+                                                        Book a Strategy Call
+                                                    </motion.button>
+                                                </Link>
+                                            </div>
+                                        </div>
                                     )}
                                     {errorMsg && <p className="text-red-500 mt-4 text-sm font-medium">{errorMsg}</p>}
                                 </form>
